@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D248A27E-B5C2-4214-8BA3-8349C1D8275B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>VerdigrisCocoaGlue</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8BF86F06-7D68-4468-B9A4-15272E733494</key>
+		<string>ssh://github.com/jeremyletang/verdigris.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>src/mac_os/VerdigrisCocoaGlue/VerdigrisCocoaGlue.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8BF86F06-7D68-4468-B9A4-15272E733494</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/jeremyletang/verdigris.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8BF86F06-7D68-4468-B9A4-15272E733494</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8BF86F06-7D68-4468-B9A4-15272E733494</string>
+			<key>IDESourceControlWCCName</key>
+			<string>verdigris</string>
+		</dict>
+	</array>
+</dict>
+</plist>

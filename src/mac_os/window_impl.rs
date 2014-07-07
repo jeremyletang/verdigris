@@ -20,18 +20,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#![allow(unused_variable)]
+#![allow(unused_variable, unused_unsafe)]
 
 use native::NativeWindow;
+use native_impl::cocoa_window_style::CocoaWindowStyle;
+use window_style::WindowStyle;
 use video_mode::VideoMode;
 
 pub struct WindowImpl {
-    window: ::objcruntime::id
+    window_handler: ::objcruntime::id
 }
 
 impl NativeWindow for WindowImpl {
-    fn create() -> WindowImpl {
-        unimplemented!()
+    fn create(mode: VideoMode, style: WindowStyle) -> WindowImpl {
+        WindowImpl {
+            window_handler: m![m![cls!(VEWindowHandler) alloc] initWithWidth: mode.width Height: mode.height WindowStyle: style]
+        }
     }
 
     fn destroy(&mut self) {

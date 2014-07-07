@@ -23,16 +23,23 @@
 use native::NativeWindow;
 use native_impl::WindowImpl;
 use video_mode::VideoMode;
+use window_style::WindowStyle;
 
 pub struct Window {
-    window_impl: WindowImpl
+    window_impl: WindowImpl,
+    on_error: Option<|&str|: 'static>
 }
 
 impl Window {
-    pub fn create() -> Window {
+    pub fn new(mode: VideoMode, style: WindowStyle) -> Window {
         Window {
-            window_impl: NativeWindow::create()
+            window_impl: NativeWindow::create(mode, style),
+            on_error: None
         }
+    }
+
+    pub fn on_error(&mut self, handler: |&str|: 'static) {
+        self.on_error = Some(handler)
     }
 
     pub fn destroy(&mut self) {

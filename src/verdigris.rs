@@ -57,3 +57,4 @@ mod native_impl;
 mod native;
 mod window;
 mod video_mode;
+pub mod window_style;

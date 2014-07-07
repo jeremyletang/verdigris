@@ -9,3 +9,4 @@
 *.rlib
 doc
 target
+build

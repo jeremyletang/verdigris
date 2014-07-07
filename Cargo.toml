@@ -1,11 +1,10 @@
 [package]
-
 name = "verdigris"
 version = "0.0.1"
 authors = ["Jeremy Letang <letang.jeremy@gmail.com>"]
+build = "make"
 
 [[lib]]
-
 name = "verdigris"
 crate_type = ["dylib", "rlib"]
 
@@ -14,3 +13,6 @@ git = "https://github.com/jeremyletang/objcruntime.git"
 
 [dependencies.foundation]
 git = "https://github.com/jeremyletang/foundation.git"
+
+[[bin]]
+name = "window"

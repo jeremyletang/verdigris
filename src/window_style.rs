@@ -20,22 +20,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use video_mode::VideoMode;
-use window_style::WindowStyle;
+#[repr(C)]
+#[deriving(Clone, Show, PartialEq, Eq, PartialOrd, Ord)]
+pub enum WindowStyle {
+   Borderless = 0,
+   Titled = 1 << 0,
+   Closable = 1 << 1,
+   Miniaturizable = 1 << 2,
+   Resizable = 1 << 3,
+   TexturedBackground = 1 << 8
+}
 
-pub trait NativeWindow {
-    fn create(mode: VideoMode, style: WindowStyle) -> Self;
-    fn destroy(&mut self);
-    fn set_title(&mut self, title: &str);
-    fn get_title<'r>(&'r self) -> &'r str;
-    fn set_size(&mut self, width: i32, height: i32);
-    fn get_size(&self) -> (i32, i32);
-    fn set_position(&mut self, pos_x: i32, pos_y: i32);
-    fn get_position(&self) -> (i32, i32);
-    fn reduce(&mut self);
-    fn restore(&mut self);
-    fn show(&mut self);
-    fn hide(&mut self);
-    fn set_video_mode(&mut self, video_mode: VideoMode);
-    fn get_video_mode(&mut self) -> VideoMode;
+impl BitAnd<WindowStyle, WindowStyle> for WindowStyle {
+    fn bitand(&self, _rhs: &WindowStyle) -> WindowStyle {
+        *self & *_rhs
+    }
+}
+
+impl BitOr<WindowStyle, WindowStyle> for WindowStyle {
+    fn bitor(&self, _rhs: &WindowStyle) -> WindowStyle {
+        *self | *_rhs
+    }
 }

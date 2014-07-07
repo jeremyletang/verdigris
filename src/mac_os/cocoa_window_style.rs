@@ -20,22 +20,29 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use video_mode::VideoMode;
-use window_style::WindowStyle;
+use window_style::{
+    WindowStyle,
+    Borderless,
+    Titled,
+    Closable,
+    Miniaturizable,
+    Resizable,
+    TexturedBackground
+};
 
-pub trait NativeWindow {
-    fn create(mode: VideoMode, style: WindowStyle) -> Self;
-    fn destroy(&mut self);
-    fn set_title(&mut self, title: &str);
-    fn get_title<'r>(&'r self) -> &'r str;
-    fn set_size(&mut self, width: i32, height: i32);
-    fn get_size(&self) -> (i32, i32);
-    fn set_position(&mut self, pos_x: i32, pos_y: i32);
-    fn get_position(&self) -> (i32, i32);
-    fn reduce(&mut self);
-    fn restore(&mut self);
-    fn show(&mut self);
-    fn hide(&mut self);
-    fn set_video_mode(&mut self, video_mode: VideoMode);
-    fn get_video_mode(&mut self) -> VideoMode;
+#[repr(C)]
+#[deriving(Clone, Show, PartialEq, Eq, PartialOrd, Ord)]
+pub enum CocoaWindowStyle {
+   NSBorderlessWindowMask = 0,
+   NSTitledWindowMask = 1 << 0,
+   NSClosableWindowMask = 1 << 1,
+   NSMiniaturizableWindowMask = 1 << 2,
+   NSResizableWindowMask = 1 << 3,
+   NSTexturedBackgroundWindowMask = 1 << 8
+}
+
+impl CocoaWindowStyle {
+    pub fn from_style(style: WindowStyle) -> CocoaWindowStyle {
+        unsafe { ::std::mem::transmute(style) }
+    }
 }
