@@ -31,7 +31,7 @@ pub struct Window {
 }
 
 impl Window {
-    pub fn new(mode: VideoMode, style: WindowStyle) -> Window {
+    pub fn new(mode: VideoMode, style: &[WindowStyle]) -> Window {
         Window {
             window_impl: NativeWindow::create(mode, style),
             on_error: None

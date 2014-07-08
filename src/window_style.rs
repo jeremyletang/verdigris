@@ -23,22 +23,10 @@
 #[repr(C)]
 #[deriving(Clone, Show, PartialEq, Eq, PartialOrd, Ord)]
 pub enum WindowStyle {
-   Borderless = 0,
-   Titled = 1 << 0,
-   Closable = 1 << 1,
-   Miniaturizable = 1 << 2,
-   Resizable = 1 << 3,
-   TexturedBackground = 1 << 8
-}
-
-impl BitAnd<WindowStyle, WindowStyle> for WindowStyle {
-    fn bitand(&self, _rhs: &WindowStyle) -> WindowStyle {
-        *self & *_rhs
-    }
-}
-
-impl BitOr<WindowStyle, WindowStyle> for WindowStyle {
-    fn bitor(&self, _rhs: &WindowStyle) -> WindowStyle {
-        *self | *_rhs
-    }
+   Borderless,
+   Titled,
+   Closable,
+   Miniaturizable,
+   Resizable,
+   TexturedBackground
 }

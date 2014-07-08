@@ -23,11 +23,11 @@
 //! Native implementation for Mac OSX
 
 pub use self::window_impl::WindowImpl;
-pub use self::cocoa_window_style::CocoaWindowStyle;
+pub use self::window_mask::WindowMask;
 
 #[link(name = "Cocoa", kind = "framework")]
 #[link(name = "VerdigrisCocoaGlue", kind = "framework")]
 extern {}
 
-pub mod cocoa_window_style;
+pub mod window_mask;
 mod window_impl;

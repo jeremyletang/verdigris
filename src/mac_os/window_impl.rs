@@ -23,7 +23,7 @@
 #![allow(unused_variable, unused_unsafe)]
 
 use native::NativeWindow;
-use native_impl::cocoa_window_style::CocoaWindowStyle;
+use native_impl::window_mask;
 use window_style::WindowStyle;
 use video_mode::VideoMode;
 
@@ -32,9 +32,9 @@ pub struct WindowImpl {
 }
 
 impl NativeWindow for WindowImpl {
-    fn create(mode: VideoMode, style: WindowStyle) -> WindowImpl {
+    fn create(mode: VideoMode, style: &[WindowStyle]) -> WindowImpl {
         WindowImpl {
-            window_handler: m![m![cls!(VEWindowHandler) alloc] initWithWidth: mode.width Height: mode.height WindowStyle: style]
+            window_handler: m![m![cls!(VEWindowHandler) alloc] initWithWidth: mode.width Height: mode.height WindowStyle: window_mask::from_windowstyle(style)]
         }
     }
 

@@ -20,7 +20,28 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use window_style::{
+#![crate_name = "verdigris"]
+#![desc = "Multi plateform opengl windowing for Rust"]
+#![license = "MIT"]
+#![crate_type = "rlib"]
+#![crate_type = "dylib"]
+#![allow(dead_code)]
+#![allow(non_camel_case_types)]
+#![allow(missing_doc)]
+#![feature(phase, macro_rules)]
+
+extern crate libc;
+#[cfg(target_os = "macos")]
+#[phase(plugin, link)]
+extern crate objcruntime;
+#[cfg(target_os = "macos")]
+extern crate objcruntime;
+#[cfg(target_os = "macos")]
+extern crate foundation;
+
+pub use self::window::Window;
+pub use self::video_mode::VideoMode;
+pub use self::window_style::{
     WindowStyle,
     Borderless,
     Titled,
@@ -30,19 +51,19 @@ use window_style::{
     TexturedBackground
 };
 
-#[repr(C)]
-#[deriving(Clone, Show, PartialEq, Eq, PartialOrd, Ord)]
-pub enum CocoaWindowStyle {
-   NSBorderlessWindowMask = 0,
-   NSTitledWindowMask = 1 << 0,
-   NSClosableWindowMask = 1 << 1,
-   NSMiniaturizableWindowMask = 1 << 2,
-   NSResizableWindowMask = 1 << 3,
-   NSTexturedBackgroundWindowMask = 1 << 8
-}
+#[cfg(target_os = "macos")]
+#[path = "mac_os/mod.rs"]
+mod native_impl;
 
-impl CocoaWindowStyle {
-    pub fn from_style(style: WindowStyle) -> CocoaWindowStyle {
-        unsafe { ::std::mem::transmute(style) }
-    }
-}
+#[cfg(target_os = "wind32")]
+#[path = "windows/mod.rs"]
+mod native_impl;
+
+#[cfg(target_os = "linux")]
+#[path = "linux/mod.rs"]
+mod native_impl;
+
+mod native;
+mod window;
+mod video_mode;
+mod window_style;

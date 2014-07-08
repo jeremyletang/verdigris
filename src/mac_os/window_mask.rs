@@ -20,41 +20,36 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#![crate_name = "verdigris"]
-#![desc = "Multi plateform opengl windowing for Rust"]
-#![license = "MIT"]
-#![crate_type = "rlib"]
-#![crate_type = "dylib"]
-#![allow(dead_code)]
-#![allow(non_camel_case_types)]
-#![allow(missing_doc)]
-#![feature(phase, macro_rules)]
+use window_style::{
+    WindowStyle,
+    Borderless,
+    Titled,
+    Closable,
+    Miniaturizable,
+    Resizable,
+    TexturedBackground
+};
 
-extern crate libc;
-#[cfg(target_os = "macos")]
-#[phase(plugin, link)]
-extern crate objcruntime;
-#[cfg(target_os = "macos")]
-extern crate objcruntime;
-#[cfg(target_os = "macos")]
-extern crate foundation;
+pub type WindowMask = i32;
+pub static NSBorderlessWindowMask: WindowMask = 0;
+pub static NSTitledWindowMask: WindowMask = 1 << 0;
+pub static NSClosableWindowMask: WindowMask = 1 << 1;
+pub static NSMiniaturizableWindowMask: WindowMask = 1 << 2;
+pub static NSResizableWindowMask: WindowMask = 1 << 3;
+pub static NSTexturedBackgroundWindowMask: WindowMask = 1 << 8;
 
-pub use self::window::Window;
-pub use self::video_mode::VideoMode;
+pub fn from_windowstyle(style: &[WindowStyle]) -> WindowMask {
+    let mut mask: WindowMask = NSBorderlessWindowMask;
+    for s in style.iter() {
+        match *s {
+            Borderless => mask = mask | NSBorderlessWindowMask,
+            Titled => mask = mask | NSTitledWindowMask,
+            Closable => mask = mask | NSClosableWindowMask,
+            Miniaturizable => mask = mask | NSMiniaturizableWindowMask,
+            Resizable => mask = mask | NSResizableWindowMask,
+            TexturedBackground => mask = mask | NSTexturedBackgroundWindowMask
+        }
+    }
 
-#[cfg(target_os = "macos")]
-#[path = "mac_os/mod.rs"]
-mod native_impl;
-
-#[cfg(target_os = "wind32")]
-#[path = "windows/mod.rs"]
-mod native_impl;
-
-#[cfg(target_os = "linux")]
-#[path = "linux/mod.rs"]
-mod native_impl;
-
-mod native;
-mod window;
-mod video_mode;
-pub mod window_style;
+    mask
+}
