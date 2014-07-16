@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>VerdigrisCocoaGlue.xcscheme</key>
+		<key>libverdigrisglue.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3F35289D196B2BDC006E10C6</key>
+		<key>3F76BFDE1976B75D008481A2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3F3528B4196B2BDC006E10C6</key>
+		<key>3F76BFF11976B75D008481A2</key>
 		<dict>
 			<key>primary</key>
 			<true/>

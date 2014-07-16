@@ -1,0 +1,445 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3F76BFE31976B75D008481A2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F76BFE21976B75D008481A2 /* Cocoa.framework */; };
+		3F76BFF41976B75D008481A2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F76BFF31976B75D008481A2 /* XCTest.framework */; };
+		3F76BFF51976B75D008481A2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F76BFE21976B75D008481A2 /* Cocoa.framework */; };
+		3F76BFF81976B75D008481A2 /* libverdigrisglue.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F76BFDF1976B75D008481A2 /* libverdigrisglue.dylib */; };
+		3F76BFFE1976B75D008481A2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F76BFFC1976B75D008481A2 /* InfoPlist.strings */; };
+		3F76C0001976B75D008481A2 /* libverdigrisglueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F76BFFF1976B75D008481A2 /* libverdigrisglueTests.m */; };
+		3F76C00B1976B77C008481A2 /* VEWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F76C0091976B77C008481A2 /* VEWindow.h */; };
+		3F76C00C1976B77C008481A2 /* VEWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F76C00A1976B77C008481A2 /* VEWindow.m */; };
+		3F76C00F1976B7B0008481A2 /* VEWindowHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F76C00D1976B7B0008481A2 /* VEWindowHandler.h */; };
+		3F76C0101976B7B0008481A2 /* VEWindowHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F76C00E1976B7B0008481A2 /* VEWindowHandler.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3F76BFF61976B75D008481A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F76BFD71976B75D008481A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F76BFDE1976B75D008481A2;
+			remoteInfo = libverdigrisglue;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3F76BFDF1976B75D008481A2 /* libverdigrisglue.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libverdigrisglue.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F76BFE21976B75D008481A2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		3F76BFE51976B75D008481A2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3F76BFE61976B75D008481A2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3F76BFE71976B75D008481A2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		3F76BFEA1976B75D008481A2 /* libverdigrisglue-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "libverdigrisglue-Prefix.pch"; sourceTree = "<group>"; };
+		3F76BFF21976B75D008481A2 /* libverdigrisglueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = libverdigrisglueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F76BFF31976B75D008481A2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		3F76BFFB1976B75D008481A2 /* libverdigrisglueTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "libverdigrisglueTests-Info.plist"; sourceTree = "<group>"; };
+		3F76BFFD1976B75D008481A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3F76BFFF1976B75D008481A2 /* libverdigrisglueTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = libverdigrisglueTests.m; sourceTree = "<group>"; };
+		3F76C0091976B77C008481A2 /* VEWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEWindow.h; sourceTree = "<group>"; };
+		3F76C00A1976B77C008481A2 /* VEWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEWindow.m; sourceTree = "<group>"; };
+		3F76C00D1976B7B0008481A2 /* VEWindowHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEWindowHandler.h; sourceTree = "<group>"; };
+		3F76C00E1976B7B0008481A2 /* VEWindowHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEWindowHandler.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3F76BFDC1976B75D008481A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F76BFE31976B75D008481A2 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F76BFEF1976B75D008481A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F76BFF51976B75D008481A2 /* Cocoa.framework in Frameworks */,
+				3F76BFF81976B75D008481A2 /* libverdigrisglue.dylib in Frameworks */,
+				3F76BFF41976B75D008481A2 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3F76BFD61976B75D008481A2 = {
+			isa = PBXGroup;
+			children = (
+				3F76BFE81976B75D008481A2 /* libverdigrisglue */,
+				3F76BFF91976B75D008481A2 /* libverdigrisglueTests */,
+				3F76BFE11976B75D008481A2 /* Frameworks */,
+				3F76BFE01976B75D008481A2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3F76BFE01976B75D008481A2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3F76BFDF1976B75D008481A2 /* libverdigrisglue.dylib */,
+				3F76BFF21976B75D008481A2 /* libverdigrisglueTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3F76BFE11976B75D008481A2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3F76BFE21976B75D008481A2 /* Cocoa.framework */,
+				3F76BFF31976B75D008481A2 /* XCTest.framework */,
+				3F76BFE41976B75D008481A2 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3F76BFE41976B75D008481A2 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3F76BFE51976B75D008481A2 /* Foundation.framework */,
+				3F76BFE61976B75D008481A2 /* CoreData.framework */,
+				3F76BFE71976B75D008481A2 /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		3F76BFE81976B75D008481A2 /* libverdigrisglue */ = {
+			isa = PBXGroup;
+			children = (
+				3F76BFE91976B75D008481A2 /* Supporting Files */,
+				3F76C0091976B77C008481A2 /* VEWindow.h */,
+				3F76C00A1976B77C008481A2 /* VEWindow.m */,
+				3F76C00D1976B7B0008481A2 /* VEWindowHandler.h */,
+				3F76C00E1976B7B0008481A2 /* VEWindowHandler.m */,
+			);
+			path = libverdigrisglue;
+			sourceTree = "<group>";
+		};
+		3F76BFE91976B75D008481A2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3F76BFEA1976B75D008481A2 /* libverdigrisglue-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3F76BFF91976B75D008481A2 /* libverdigrisglueTests */ = {
+			isa = PBXGroup;
+			children = (
+				3F76BFFF1976B75D008481A2 /* libverdigrisglueTests.m */,
+				3F76BFFA1976B75D008481A2 /* Supporting Files */,
+			);
+			path = libverdigrisglueTests;
+			sourceTree = "<group>";
+		};
+		3F76BFFA1976B75D008481A2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3F76BFFB1976B75D008481A2 /* libverdigrisglueTests-Info.plist */,
+				3F76BFFC1976B75D008481A2 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		3F76BFDD1976B75D008481A2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F76C00F1976B7B0008481A2 /* VEWindowHandler.h in Headers */,
+				3F76C00B1976B77C008481A2 /* VEWindow.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		3F76BFDE1976B75D008481A2 /* libverdigrisglue */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F76C0031976B75D008481A2 /* Build configuration list for PBXNativeTarget "libverdigrisglue" */;
+			buildPhases = (
+				3F76BFDB1976B75D008481A2 /* Sources */,
+				3F76BFDC1976B75D008481A2 /* Frameworks */,
+				3F76BFDD1976B75D008481A2 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libverdigrisglue;
+			productName = libverdigrisglue;
+			productReference = 3F76BFDF1976B75D008481A2 /* libverdigrisglue.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		3F76BFF11976B75D008481A2 /* libverdigrisglueTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F76C0061976B75D008481A2 /* Build configuration list for PBXNativeTarget "libverdigrisglueTests" */;
+			buildPhases = (
+				3F76BFEE1976B75D008481A2 /* Sources */,
+				3F76BFEF1976B75D008481A2 /* Frameworks */,
+				3F76BFF01976B75D008481A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F76BFF71976B75D008481A2 /* PBXTargetDependency */,
+			);
+			name = libverdigrisglueTests;
+			productName = libverdigrisglueTests;
+			productReference = 3F76BFF21976B75D008481A2 /* libverdigrisglueTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3F76BFD71976B75D008481A2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = libverdigris;
+				TargetAttributes = {
+					3F76BFF11976B75D008481A2 = {
+						TestTargetID = 3F76BFDE1976B75D008481A2;
+					};
+				};
+			};
+			buildConfigurationList = 3F76BFDA1976B75D008481A2 /* Build configuration list for PBXProject "libverdigrisglue" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3F76BFD61976B75D008481A2;
+			productRefGroup = 3F76BFE01976B75D008481A2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3F76BFDE1976B75D008481A2 /* libverdigrisglue */,
+				3F76BFF11976B75D008481A2 /* libverdigrisglueTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3F76BFF01976B75D008481A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F76BFFE1976B75D008481A2 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3F76BFDB1976B75D008481A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F76C00C1976B77C008481A2 /* VEWindow.m in Sources */,
+				3F76C0101976B7B0008481A2 /* VEWindowHandler.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F76BFEE1976B75D008481A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F76C0001976B75D008481A2 /* libverdigrisglueTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3F76BFF71976B75D008481A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F76BFDE1976B75D008481A2 /* libverdigrisglue */;
+			targetProxy = 3F76BFF61976B75D008481A2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3F76BFFC1976B75D008481A2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F76BFFD1976B75D008481A2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3F76C0011976B75D008481A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		3F76C0021976B75D008481A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		3F76C0041976B75D008481A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "libverdigrisglue/libverdigrisglue-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3F76C0051976B75D008481A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "libverdigrisglue/libverdigrisglue-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3F76C0071976B75D008481A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/libverdigrisglue.dylib";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "libverdigrisglue/libverdigrisglue-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "libverdigrisglueTests/libverdigrisglueTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		3F76C0081976B75D008481A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/libverdigrisglue.dylib";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "libverdigrisglue/libverdigrisglue-Prefix.pch";
+				INFOPLIST_FILE = "libverdigrisglueTests/libverdigrisglueTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3F76BFDA1976B75D008481A2 /* Build configuration list for PBXProject "libverdigrisglue" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F76C0011976B75D008481A2 /* Debug */,
+				3F76C0021976B75D008481A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F76C0031976B75D008481A2 /* Build configuration list for PBXNativeTarget "libverdigrisglue" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F76C0041976B75D008481A2 /* Debug */,
+				3F76C0051976B75D008481A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3F76C0061976B75D008481A2 /* Build configuration list for PBXNativeTarget "libverdigrisglueTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F76C0071976B75D008481A2 /* Debug */,
+				3F76C0081976B75D008481A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3F76BFD71976B75D008481A2 /* Project object */;
+}

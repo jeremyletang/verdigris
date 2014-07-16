@@ -20,11 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-//! Native implementation for Mac OSX
-
-pub use self::window_impl::WindowImpl;
-pub use self::window_mask::WindowMask;
-
-pub mod window_mask;
-mod window_impl;
-mod ffi;
+#[link(name = "verdigrisglue")]
+extern {
+    pub fn ve_windowhandler_new(size: ::foundation::NSSize, style: i32) -> ::objcruntime::id;
+}

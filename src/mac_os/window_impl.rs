@@ -27,8 +27,8 @@ use native_impl::window_mask;
 use window_style::WindowStyle;
 use video_mode::VideoMode;
 use foundation::{NSString, NSSize};
+use native_impl::ffi;
 use objc = objcruntime;
-use objcruntime::ffi::Wrapper;
 
 pub struct WindowImpl {
     window_handler: objc::id,
@@ -40,8 +40,9 @@ impl NativeWindow for WindowImpl {
         let w_mask = window_mask::from_windowstyle(style);
         let w_title = NSString::from_str(title);
         let w_size = NSSize { width: mode.width as f64, height: mode.height as f64 };
-        let w_handler = m![m![cls!(VEWindowHandler) alloc] initWithSize: w_size
-                                                               AndWindowStyle: w_mask];
+        // let w_handler = m![m![cls!(VEWindowHandler) alloc] initWithSize: w_size
+                                                               // AndWindowStyle: w_mask];
+        let w_handler = unsafe { ffi::ve_windowhandler_new(w_size, w_mask) };
         m![w_handler setTitle: NSString::from_str(title)];
         WindowImpl {
             window_handler: w_handler,

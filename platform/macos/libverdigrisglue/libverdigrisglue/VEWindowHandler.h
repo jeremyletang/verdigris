@@ -1,6 +1,6 @@
 //
 //  VEWindowHandler.h
-//  VerdigrisCocoaGlue
+//  libverdigrisglue
 //
 //  Created by Jeremy on 07/07/2014.
 //  Copyright (c) 2014 libverdigris. All rights reserved.
@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import "VEWindow.h"
+
+id ve_windowhandler_new(NSSize size, NSUInteger style);
 
 @interface VEWindowHandler : NSObject<NSWindowDelegate> {
     VEWindow *window;

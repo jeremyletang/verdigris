@@ -1,6 +1,6 @@
 //
 //  VEWindowHandler.m
-//  VerdigrisCocoaGlue
+//  libverdigrisglue
 //
 //  Created by Jeremy on 07/07/2014.
 //  Copyright (c) 2014 libverdigris. All rights reserved.
@@ -16,7 +16,7 @@
         NSLog(@"Cannot create a new window outside the main thread.");
         return nil;
     }
-
+    
     // init self super
     if ((self = [super init])) {
         self->window = nil;
@@ -35,16 +35,16 @@
                                                        defer: NO];
         
         
-//        // Create the view.
-//        self->glView = [[NSOpenGLView alloc] initWithFrame:[[self->window contentView] frame]];
-//        
-//        if (self->glView == nil) {
-//            NSLog(@"Could not create an instance of NSOpenGLView ");
-//            return nil;
-//        }
-//        
-//        // Set the view to the window as its content view.
-//        [self->window setContentView:self->glView];
+        //        // Create the view.
+        //        self->glView = [[NSOpenGLView alloc] initWithFrame:[[self->window contentView] frame]];
+        //
+        //        if (self->glView == nil) {
+        //            NSLog(@"Could not create an instance of NSOpenGLView ");
+        //            return nil;
+        //        }
+        //
+        //        // Set the view to the window as its content view.
+        //        [self->window setContentView:self->glView];
         
         [self->window setDelegate: self];
         [self->window setAcceptsMouseMovedEvents: YES];
@@ -91,3 +91,9 @@
 }
 
 @end
+
+id ve_windowhandler_new(NSSize size, NSUInteger style) {
+    return [[VEWindowHandler alloc] initWithSize: size
+                                  AndWindowStyle:style];
+}
+

@@ -21,9 +21,9 @@
 # SOFTWARE.
 
 build-osx-glue:
-	cd platform/macos/VerdigrisCocoaGlue && xcodebuild
-	sudo rm -rf /Library/Frameworks/VerdigrisCocoaGlue.framework
-	sudo cp -rf platform/macos/VerdigrisCocoaGlue/build/Release/VerdigrisCocoaGlue.framework /Library/Frameworks/VerdigrisCocoaGlue.framework
+	cd platform/macos/libverdigrisglue && xcodebuild
+	rm -rf /usr/local/lib/libverdigrisglue.dylib
+	cp platform/macos/libverdigrisglue/build/Release/libverdigrisglue.dylib /usr/local/lib
 
 doc:
 	rustdoc -o doc src/lib.rs -L target/deps

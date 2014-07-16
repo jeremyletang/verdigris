@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:VerdigrisCocoaGlue.xcodeproj">
+      location = "self:libverdigrisglue.xcodeproj">
    </FileRef>
 </Workspace>

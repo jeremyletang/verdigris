@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3F35289D196B2BDC006E10C6"
-               BuildableName = "VerdigrisCocoaGlue.framework"
-               BlueprintName = "VerdigrisCocoaGlue"
-               ReferencedContainer = "container:VerdigrisCocoaGlue.xcodeproj">
+               BlueprintIdentifier = "3F76BFDE1976B75D008481A2"
+               BuildableName = "libverdigrisglue.dylib"
+               BlueprintName = "libverdigrisglue"
+               ReferencedContainer = "container:libverdigrisglue.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3F3528B4196B2BDC006E10C6"
-               BuildableName = "VerdigrisCocoaGlueTests.xctest"
-               BlueprintName = "VerdigrisCocoaGlueTests"
-               ReferencedContainer = "container:VerdigrisCocoaGlue.xcodeproj">
+               BlueprintIdentifier = "3F76BFF11976B75D008481A2"
+               BuildableName = "libverdigrisglueTests.xctest"
+               BlueprintName = "libverdigrisglueTests"
+               ReferencedContainer = "container:libverdigrisglue.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
