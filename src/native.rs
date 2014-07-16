@@ -24,7 +24,7 @@ use video_mode::VideoMode;
 use window_style::WindowStyle;
 
 pub trait NativeWindow {
-    fn create(mode: VideoMode, style: &[WindowStyle]) -> Self;
+    fn create(mode: VideoMode, style: &[WindowStyle], title: &str) -> Self;
     fn destroy(&mut self);
     fn set_title(&mut self, title: &str);
     fn get_title<'r>(&'r self) -> &'r str;
@@ -38,4 +38,7 @@ pub trait NativeWindow {
     fn hide(&mut self);
     fn set_video_mode(&mut self, video_mode: VideoMode);
     fn get_video_mode(&mut self) -> VideoMode;
+    fn should_close(&self) -> bool;
+    fn close(&mut self);
+    fn poll_event(&mut self);
 }

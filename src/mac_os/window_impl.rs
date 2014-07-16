@@ -26,15 +26,26 @@ use native::NativeWindow;
 use native_impl::window_mask;
 use window_style::WindowStyle;
 use video_mode::VideoMode;
+use foundation::{NSString, NSSize};
+use objc = objcruntime;
+use objcruntime::ffi::Wrapper;
 
 pub struct WindowImpl {
-    window_handler: ::objcruntime::id
+    window_handler: objc::id,
+    title: String,
 }
 
 impl NativeWindow for WindowImpl {
-    fn create(mode: VideoMode, style: &[WindowStyle]) -> WindowImpl {
+    fn create(mode: VideoMode, style: &[WindowStyle], title: &str) -> WindowImpl {
+        let w_mask = window_mask::from_windowstyle(style);
+        let w_title = NSString::from_str(title);
+        let w_size = NSSize { width: mode.width as f64, height: mode.height as f64 };
+        let w_handler = m![m![cls!(VEWindowHandler) alloc] initWithSize: w_size
+                                                               AndWindowStyle: w_mask];
+        m![w_handler setTitle: NSString::from_str(title)];
         WindowImpl {
-            window_handler: m![m![cls!(VEWindowHandler) alloc] initWithWidth: mode.width Height: mode.height WindowStyle: window_mask::from_windowstyle(style)]
+            window_handler: w_handler,
+            title: title.to_string()
         }
     }
 
@@ -43,11 +54,13 @@ impl NativeWindow for WindowImpl {
     }
 
     fn set_title(&mut self, title: &str) {
-        unimplemented!()
+        self.title = title.to_string();
+        let w_title = NSString::from_str(title);
+        m![self.window_handler setTitle: w_title];
     }
 
     fn get_title<'r>(&'r self) -> &'r str {
-        unimplemented!()
+        self.title.as_slice()
     }
 
     fn set_size(&mut self, width: i32, height: i32) {
@@ -75,7 +88,7 @@ impl NativeWindow for WindowImpl {
     }
 
     fn show(&mut self) {
-        unimplemented!()
+        m![self.window_handler show];
     }
 
     fn hide(&mut self) {
@@ -88,6 +101,22 @@ impl NativeWindow for WindowImpl {
 
     fn get_video_mode(&mut self) -> VideoMode {
         unimplemented!()
+    }
+
+    fn should_close(&self) -> bool {
+        let should: uint = unsafe { ::std::mem::transmute(m![self.window_handler shouldClose]) };
+        match should {
+            0 => false,
+            _ => true
+        }
+    }
+
+    fn close(&mut self) {
+        unimplemented!()
+    }
+
+    fn poll_event(&mut self) {
+        m![self.window_handler fetchEvents];
     }
 
 }

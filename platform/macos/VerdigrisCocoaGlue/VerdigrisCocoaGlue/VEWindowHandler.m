@@ -10,31 +10,84 @@
 
 @implementation VEWindowHandler
 
-- (id) initWithWidth:(int32_t)width Height:(int32_t)height WindowStyle:(NSUInteger)style {
+- (id) initWithSize:(NSSize)size AndWindowStyle:(NSUInteger)style {
     // check if we are in the main thread
     if ([NSThread currentThread] != [NSThread mainThread]) {
         NSLog(@"Cannot create a new window outside the main thread.");
         return nil;
     }
-    // init self
+
+    // init self super
     if ((self = [super init])) {
         self->window = nil;
+        self->shouldClose = NO;
         
         [NSApplication sharedApplication];
-        [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
-        [NSApp activateIgnoringOtherApps:YES];
+        [NSApp setActivationPolicy: NSApplicationActivationPolicyRegular];
+        [NSApp activateIgnoringOtherApps: YES];
         
-        // Tell the application to stop bouncing in the Dock.
+        // should stop bounce.
         [[NSApplication sharedApplication] finishLaunching];
         
-        self->window = [[VEWindow alloc] initWithContentRect:NSMakeRect(0, 0, width, height)
-                                                styleMask:style backing:NSBackingStoreBuffered defer:NO];
-        [self->window cascadeTopLeftFromPoint:NSMakePoint(20,20)];
-        [self->window setTitle:@"HELLO APP"];
-        [self->window makeKeyAndOrderFront:window];
+        self->window = [[VEWindow alloc] initWithContentRect: NSMakeRect(0, 0, size.width, size.height)
+                                                   styleMask: style
+                                                     backing: NSBackingStoreBuffered
+                                                       defer: NO];
         
+        
+//        // Create the view.
+//        self->glView = [[NSOpenGLView alloc] initWithFrame:[[self->window contentView] frame]];
+//        
+//        if (self->glView == nil) {
+//            NSLog(@"Could not create an instance of NSOpenGLView ");
+//            return nil;
+//        }
+//        
+//        // Set the view to the window as its content view.
+//        [self->window setContentView:self->glView];
+        
+        [self->window setDelegate: self];
+        [self->window setAcceptsMouseMovedEvents: YES];
+        [self->window setIgnoresMouseEvents: NO];
+        
+        [self->window center];
+        [self->window setAutodisplay: YES];
+        [self->window setReleasedWhenClosed: NO];
     }
+    
     return self;
+}
+
+- (void) setTitle:(NSString*)title {
+    [self->window setTitle: title];
+}
+
+- (void) show {
+    [self->window makeKeyAndOrderFront: nil];
+}
+
+- (NSUInteger) shouldClose {
+    return self->shouldClose;
+}
+
+// delegate functions
+
+- (BOOL) windowShouldClose:(id)sender {
+    self->shouldClose = true;
+    return YES;
+}
+
+- (void) fetchEvents
+{
+    [NSApplication sharedApplication];
+    NSEvent* event = nil;
+    
+    while ((event = [NSApp nextEventMatchingMask: NSAnyEventMask
+                                       untilDate: [NSDate distantPast]
+                                          inMode: NSDefaultRunLoopMode
+                                         dequeue: YES])) {
+        [NSApp sendEvent:event];
+    }
 }
 
 @end

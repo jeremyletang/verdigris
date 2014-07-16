@@ -22,6 +22,7 @@
 
 build-osx-glue:
 	cd platform/macos/VerdigrisCocoaGlue && xcodebuild
+	sudo rm -rf /Library/Frameworks/VerdigrisCocoaGlue.framework
 	sudo cp -rf platform/macos/VerdigrisCocoaGlue/build/Release/VerdigrisCocoaGlue.framework /Library/Frameworks/VerdigrisCocoaGlue.framework
 
 doc:

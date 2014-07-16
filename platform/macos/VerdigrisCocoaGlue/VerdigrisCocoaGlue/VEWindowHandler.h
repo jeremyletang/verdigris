@@ -9,8 +9,17 @@
 #import <Cocoa/Cocoa.h>
 #import "VEWindow.h"
 
-@interface VEWindowHandler : NSObject {
+@interface VEWindowHandler : NSObject<NSWindowDelegate> {
     VEWindow *window;
+    // FIXME should be removed and add in the events queue
+    BOOL shouldClose;
 }
+
+- (id) initWithSize:(NSSize)size AndWindowStyle:(NSUInteger)style;
+- (void) setTitle:(NSString*)title;
+- (NSUInteger) shouldClose;
+- (void) show;
+
+- (void) fetchEvents;
 
 @end

@@ -27,14 +27,16 @@ use window_style::WindowStyle;
 
 pub struct Window {
     window_impl: WindowImpl,
-    on_error: Option<|&str|: 'static>
+    on_error: Option<|&str|: 'static>,
+    video_mode: VideoMode
 }
 
 impl Window {
-    pub fn new(mode: VideoMode, style: &[WindowStyle]) -> Window {
+    pub fn new(mode: VideoMode, style: &[WindowStyle], title: &str) -> Window {
         Window {
-            window_impl: NativeWindow::create(mode, style),
-            on_error: None
+            window_impl: NativeWindow::create(mode.clone(), style, title),
+            on_error: None,
+            video_mode: mode
         }
     }
 
@@ -87,10 +89,23 @@ impl Window {
     }
 
     pub fn set_video_mode(&mut self, video_mode: VideoMode) {
+        self.video_mode = video_mode.clone();
         self.window_impl.set_video_mode(video_mode)
     }
 
     pub fn get_video_mode(&mut self) -> VideoMode {
-        self.get_video_mode()
+        self.video_mode.clone()
+    }
+
+    pub fn should_close(&self) -> bool {
+        self.window_impl.should_close()
+    }
+
+    pub fn close(&mut self) {
+        self.window_impl.close()
+    }
+
+    pub fn poll_event(&mut self) {
+        self.window_impl.poll_event()
     }
 }
