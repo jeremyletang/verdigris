@@ -31,13 +31,6 @@
 #![feature(phase, macro_rules)]
 
 extern crate libc;
-#[cfg(target_os = "macos")]
-#[phase(plugin, link)]
-extern crate objcruntime;
-#[cfg(target_os = "macos")]
-extern crate objcruntime;
-#[cfg(target_os = "macos")]
-extern crate foundation;
 
 pub use self::window::Window;
 pub use self::video_mode::VideoMode;

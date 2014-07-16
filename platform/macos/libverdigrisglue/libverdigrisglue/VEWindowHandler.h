@@ -10,6 +10,10 @@
 #import "VEWindow.h"
 
 id ve_windowhandler_new(NSSize size, NSUInteger style);
+void ve_windowhandler_set_title(id window_handler, const char *title);
+void ve_windowhandler_fetch_events(id window_handler);
+void ve_windowhandler_show(id window_handler);
+BOOL ve_windowhandler_should_close(id window_handler);
 
 @interface VEWindowHandler : NSObject<NSWindowDelegate> {
     VEWindow *window;

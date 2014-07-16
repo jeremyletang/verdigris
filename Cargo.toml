@@ -3,9 +3,3 @@ name = "verdigris"
 version = "0.0.1"
 authors = ["Jeremy Letang <letang.jeremy@gmail.com>"]
 build = "make"
-
-[dependencies.objcruntime]
-git = "https://github.com/jeremyletang/objcruntime.git"
-
-[dependencies.foundation]
-git = "https://github.com/jeremyletang/foundation.git"

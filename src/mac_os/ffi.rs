@@ -20,7 +20,48 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+use libc::{c_void, c_int, c_char};
+
+pub type BOOL = i8;
+pub static YES: BOOL = 1;
+pub static NO: BOOL = 0;
+
+pub fn to_bool(value: BOOL) -> bool {
+    value == YES
+}
+
+#[allow(non_snake_case_functions)]
+pub fn to_BOOL(value: bool) -> BOOL {
+    match value {
+        true => YES,
+        false => NO
+    }
+}
+
+pub struct id {
+    ptr: *mut c_void
+}
+
+pub struct NSRect {
+    pub origin: NSPoint,
+    pub size: NSSize
+}
+
+pub struct NSPoint {
+    pub x: f64,
+    pub y: f64
+}
+
+pub struct NSSize {
+    pub width: f64,
+    pub height: f64
+}
+
 #[link(name = "verdigrisglue")]
 extern {
-    pub fn ve_windowhandler_new(size: ::foundation::NSSize, style: i32) -> ::objcruntime::id;
+    pub fn ve_windowhandler_new(size: NSSize, style: c_int) -> id;
+    pub fn ve_windowhandler_set_title(window_handler: id, title: *const c_char);
+    pub fn ve_windowhandler_fetch_events(window_handler: id);
+    pub fn ve_windowhandler_show(window_handler: id);
+    pub fn ve_windowhandler_should_close(window_handler: id) -> BOOL;
 }

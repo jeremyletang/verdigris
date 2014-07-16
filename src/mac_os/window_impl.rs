@@ -26,24 +26,21 @@ use native::NativeWindow;
 use native_impl::window_mask;
 use window_style::WindowStyle;
 use video_mode::VideoMode;
-use foundation::{NSString, NSSize};
 use native_impl::ffi;
-use objc = objcruntime;
 
 pub struct WindowImpl {
-    window_handler: objc::id,
+    window_handler: ffi::id,
     title: String,
 }
 
 impl NativeWindow for WindowImpl {
     fn create(mode: VideoMode, style: &[WindowStyle], title: &str) -> WindowImpl {
         let w_mask = window_mask::from_windowstyle(style);
-        let w_title = NSString::from_str(title);
-        let w_size = NSSize { width: mode.width as f64, height: mode.height as f64 };
-        // let w_handler = m![m![cls!(VEWindowHandler) alloc] initWithSize: w_size
-                                                               // AndWindowStyle: w_mask];
+        // let w_title = NSString::from_str(title);
+        let w_size = ffi::NSSize { width: mode.width as f64, height: mode.height as f64 };
         let w_handler = unsafe { ffi::ve_windowhandler_new(w_size, w_mask) };
-        m![w_handler setTitle: NSString::from_str(title)];
+        title.with_c_str(|c_str| unsafe { ffi::ve_windowhandler_set_title(w_handler, c_str) });
+        // m![w_handler setTitle: NSString::from_str(title)];
         WindowImpl {
             window_handler: w_handler,
             title: title.to_string()
@@ -55,9 +52,10 @@ impl NativeWindow for WindowImpl {
     }
 
     fn set_title(&mut self, title: &str) {
-        self.title = title.to_string();
-        let w_title = NSString::from_str(title);
-        m![self.window_handler setTitle: w_title];
+        title.with_c_str(|c_str| unsafe { ffi::ve_windowhandler_set_title(self.window_handler, c_str) });
+        // self.title = title.to_string();
+        // let w_title = NSString::from_str(title);
+        // m![self.window_handler setTitle: w_title];
     }
 
     fn get_title<'r>(&'r self) -> &'r str {
@@ -89,7 +87,7 @@ impl NativeWindow for WindowImpl {
     }
 
     fn show(&mut self) {
-        m![self.window_handler show];
+        unsafe { ffi::ve_windowhandler_show(self.window_handler) }
     }
 
     fn hide(&mut self) {
@@ -105,11 +103,8 @@ impl NativeWindow for WindowImpl {
     }
 
     fn should_close(&self) -> bool {
-        let should: uint = unsafe { ::std::mem::transmute(m![self.window_handler shouldClose]) };
-        match should {
-            0 => false,
-            _ => true
-        }
+        let close: ffi::BOOL = unsafe { ffi::ve_windowhandler_should_close(self.window_handler) };
+        ffi::to_bool(close)
     }
 
     fn close(&mut self) {
@@ -117,7 +112,7 @@ impl NativeWindow for WindowImpl {
     }
 
     fn poll_event(&mut self) {
-        m![self.window_handler fetchEvents];
+        unsafe { ffi::ve_windowhandler_fetch_events(self.window_handler) }
     }
 
 }
