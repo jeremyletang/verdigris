@@ -20,37 +20,40 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use cursor::Cursor;
-use video_mode::VideoMode;
-use window_style::WindowStyle;
+use native_impl::cursor_impl;
 
-pub trait NativeWindow {
-    fn create(mode: VideoMode, style: &[WindowStyle], title: &str) -> Self;
-    fn destroy(&mut self);
-    fn set_title(&mut self, title: &str);
-    fn get_title<'r>(&'r self) -> &'r str;
-    fn set_size(&mut self, width: i32, height: i32);
-    fn get_size(&self) -> (i32, i32);
-    fn set_position(&mut self, pos_x: i32, pos_y: i32);
-    fn get_position(&self) -> (i32, i32);
-    fn reduce(&mut self);
-    fn restore(&mut self);
-    fn show(&mut self);
-    fn hide(&mut self);
-    fn set_video_mode(&mut self, video_mode: VideoMode);
-    fn get_video_mode(&mut self) -> VideoMode;
-    fn should_close(&self) -> bool;
-    fn close(&mut self);
-    fn poll_event(&mut self);
+#[repr(u32)]
+#[deriving(Clone, PartialEq, PartialOrd, Show)]
+pub enum Cursor {
+    Arrow = 0u32,
+    IBeam,
+    CrossHair,
+    ClosedHand,
+    OpenHand,
+    PointingHand,
+    ResizeLeft,
+    ResizeRight,
+    ResizeLeftRight,
+    ResizeUp,
+    ResizeDown,
+    ResizeUpDown,
+    DisappearingItem,
+    IBeamVertical
 }
 
-pub trait NativeCursor {
-    fn show();
-    fn hide();
-    fn set(cursor: Cursor);
+pub fn get_default() -> Cursor {
+    cursor_impl::get_default()
 }
 
-pub trait Wrapper<T> {
-    fn unwrap(&self) -> &T;
-    fn wrap(_: T) {}
+pub fn show() {
+    cursor_impl::show()
 }
+
+pub fn hide() {
+    cursor_impl::hide()
+}
+
+pub fn set(cursor: Cursor) {
+    cursor_impl::set(cursor)
+}
+

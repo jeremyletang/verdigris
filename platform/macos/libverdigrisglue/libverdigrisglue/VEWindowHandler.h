@@ -25,6 +25,7 @@ BOOL ve_windowhandler_should_close(id window_handler);
 - (void) setTitle:(NSString*)title;
 - (NSUInteger) shouldClose;
 - (void) show;
+- (VEWindow *) getWindow;
 
 - (void) fetchEvents;
 

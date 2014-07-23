@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use native::NativeWindow;
+use native::{NativeWindow, Wrapper};
 use native_impl::WindowImpl;
 use video_mode::VideoMode;
 use window_style::WindowStyle;
@@ -108,4 +108,8 @@ impl Window {
     pub fn poll_event(&mut self) {
         self.window_impl.poll_event()
     }
+}
+
+impl Wrapper<WindowImpl> for Window {
+    fn unwrap(&self) -> &WindowImpl { &self.window_impl }
 }

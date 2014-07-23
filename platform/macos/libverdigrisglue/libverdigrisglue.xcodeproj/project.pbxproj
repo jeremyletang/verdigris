@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F1DD50A197CF09F00881415 /* VECursor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F1DD508197CF09F00881415 /* VECursor.h */; };
+		3F1DD50B197CF09F00881415 /* VECursor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1DD509197CF09F00881415 /* VECursor.m */; };
+		3F69B498198018E1000E15B2 /* VEMouse.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F69B496198018E1000E15B2 /* VEMouse.h */; };
+		3F69B499198018E1000E15B2 /* VEMouse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F69B497198018E1000E15B2 /* VEMouse.m */; };
 		3F76BFE31976B75D008481A2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F76BFE21976B75D008481A2 /* Cocoa.framework */; };
 		3F76BFF41976B75D008481A2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F76BFF31976B75D008481A2 /* XCTest.framework */; };
 		3F76BFF51976B75D008481A2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F76BFE21976B75D008481A2 /* Cocoa.framework */; };
@@ -30,6 +34,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F1DD508197CF09F00881415 /* VECursor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VECursor.h; sourceTree = "<group>"; };
+		3F1DD509197CF09F00881415 /* VECursor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VECursor.m; sourceTree = "<group>"; };
+		3F69B496198018E1000E15B2 /* VEMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEMouse.h; sourceTree = "<group>"; };
+		3F69B497198018E1000E15B2 /* VEMouse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEMouse.m; sourceTree = "<group>"; };
 		3F76BFDF1976B75D008481A2 /* libverdigrisglue.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libverdigrisglue.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F76BFE21976B75D008481A2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3F76BFE51976B75D008481A2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -116,6 +124,10 @@
 				3F76C00A1976B77C008481A2 /* VEWindow.m */,
 				3F76C00D1976B7B0008481A2 /* VEWindowHandler.h */,
 				3F76C00E1976B7B0008481A2 /* VEWindowHandler.m */,
+				3F1DD508197CF09F00881415 /* VECursor.h */,
+				3F1DD509197CF09F00881415 /* VECursor.m */,
+				3F69B496198018E1000E15B2 /* VEMouse.h */,
+				3F69B497198018E1000E15B2 /* VEMouse.m */,
 			);
 			path = libverdigrisglue;
 			sourceTree = "<group>";
@@ -153,8 +165,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F1DD50A197CF09F00881415 /* VECursor.h in Headers */,
 				3F76C00F1976B7B0008481A2 /* VEWindowHandler.h in Headers */,
 				3F76C00B1976B77C008481A2 /* VEWindow.h in Headers */,
+				3F69B498198018E1000E15B2 /* VEMouse.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +258,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F69B499198018E1000E15B2 /* VEMouse.m in Sources */,
+				3F1DD50B197CF09F00881415 /* VECursor.m in Sources */,
 				3F76C00C1976B77C008481A2 /* VEWindow.m in Sources */,
 				3F76C0101976B7B0008481A2 /* VEWindowHandler.m in Sources */,
 			);
@@ -430,6 +446,7 @@
 				3F76C0051976B75D008481A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3F76C0061976B75D008481A2 /* Build configuration list for PBXNativeTarget "libverdigrisglueTests" */ = {
 			isa = XCConfigurationList;
@@ -438,6 +455,7 @@
 				3F76C0081976B75D008481A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

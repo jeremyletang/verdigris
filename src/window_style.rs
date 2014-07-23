@@ -20,7 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#[repr(C)]
 #[deriving(Clone, Show, PartialEq, Eq, PartialOrd, Ord)]
 pub enum WindowStyle {
    Borderless,

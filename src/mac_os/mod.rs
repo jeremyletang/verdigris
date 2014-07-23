@@ -26,5 +26,7 @@ pub use self::window_impl::WindowImpl;
 pub use self::window_mask::WindowMask;
 
 pub mod window_mask;
+pub mod cursor_impl;
+pub mod mouse_impl;
 mod window_impl;
 mod ffi;

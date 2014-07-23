@@ -25,24 +25,44 @@
 #![license = "MIT"]
 #![crate_type = "rlib"]
 #![crate_type = "dylib"]
-#![allow(dead_code)]
-#![allow(non_camel_case_types)]
-#![allow(missing_doc)]
-#![feature(phase, macro_rules)]
+#![allow(dead_code, non_camel_case_types, missing_doc)]
+#![feature(struct_variant)]
+#![unstable]
 
 extern crate libc;
 
 pub use self::window::Window;
 pub use self::video_mode::VideoMode;
-pub use self::window_style::{
-    WindowStyle,
-    Borderless,
-    Titled,
-    Closable,
-    Miniaturizable,
-    Resizable,
-    TexturedBackground
-};
+pub use self::window_style::WindowStyle;
+pub use self::event::Event;
+pub mod ve {
+    pub use super::window_style::{
+        Borderless,
+        Titled,
+        Closable,
+        Miniaturizable,
+        Resizable,
+        TexturedBackground
+    };
+
+    pub use super::event::{
+        Close,
+        Move,
+        Resize,
+        KeyUp,
+        KeyDown,
+        MouseMoved,
+        LeftMouseDown,
+        LeftMouseUp,
+        RightMouseDown,
+        RightMouseUp,
+        ScrollWheelUp,
+        ScrollWheelDown,
+        MouseEntered,
+        MouseExited
+    };
+}
+
 
 #[cfg(target_os = "macos")]
 #[path = "mac_os/mod.rs"]
@@ -60,3 +80,7 @@ mod native;
 mod window;
 mod video_mode;
 mod window_style;
+mod event;
+pub mod keyboard;
+pub mod cursor;
+pub mod mouse;

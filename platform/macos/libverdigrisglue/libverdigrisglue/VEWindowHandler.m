@@ -86,8 +86,13 @@
                                        untilDate: [NSDate distantPast]
                                           inMode: NSDefaultRunLoopMode
                                          dequeue: YES])) {
+        NSLog(@"%@", event);
         [NSApp sendEvent:event];
     }
+}
+
+- (VEWindow *) getWindow {
+    return self->window;
 }
 
 @end

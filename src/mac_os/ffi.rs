@@ -20,7 +20,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use libc::{c_void, c_int, c_char};
+#![allow(raw_pointer_deriving)]
+
+use libc::{c_void, c_int, c_char, c_uint};
 
 pub type BOOL = i8;
 pub static YES: BOOL = 1;
@@ -38,30 +40,90 @@ pub fn to_BOOL(value: bool) -> BOOL {
     }
 }
 
+#[deriving(Clone, PartialEq, PartialOrd, Show)]
 pub struct id {
     ptr: *mut c_void
 }
 
+#[deriving(Clone, PartialEq, PartialOrd, Show, Default)]
 pub struct NSRect {
     pub origin: NSPoint,
     pub size: NSSize
 }
 
+#[deriving(Clone, PartialEq, PartialOrd, Show, Default)]
 pub struct NSPoint {
     pub x: f64,
     pub y: f64
 }
 
+#[deriving(Clone, PartialEq, PartialOrd, Show, Default)]
 pub struct NSSize {
     pub width: f64,
     pub height: f64
 }
 
-#[link(name = "verdigrisglue")]
-extern {
-    pub fn ve_windowhandler_new(size: NSSize, style: c_int) -> id;
-    pub fn ve_windowhandler_set_title(window_handler: id, title: *const c_char);
-    pub fn ve_windowhandler_fetch_events(window_handler: id);
-    pub fn ve_windowhandler_show(window_handler: id);
-    pub fn ve_windowhandler_should_close(window_handler: id) -> BOOL;
+pub fn ve_windowhandler_new(size: NSSize, style: c_int) -> id {
+    unsafe { glue::ve_windowhandler_new(size, style) }
+}
+
+pub fn ve_windowhandler_set_title(window_handler: id, title: *const c_char) {
+    unsafe { glue::ve_windowhandler_set_title(window_handler, title) }
+}
+
+pub fn ve_windowhandler_fetch_events(window_handler: id) {
+    unsafe { glue::ve_windowhandler_fetch_events(window_handler) }
+}
+
+pub fn ve_windowhandler_show(window_handler: id) {
+    unsafe { glue::ve_windowhandler_show(window_handler) }
+}
+
+pub fn ve_windowhandler_should_close(window_handler: id) -> BOOL {
+    unsafe { glue::ve_windowhandler_should_close(window_handler) }
+}
+
+pub fn ve_cursor_show() {
+    unsafe { glue::ve_cursor_show() }
+}
+
+pub fn ve_cursor_hide() {
+    unsafe { glue::ve_cursor_hide() }
+}
+
+pub fn ve_cursor_set(cursor: c_uint) {
+    unsafe { glue::ve_cursor_set(cursor) }
+}
+
+pub fn ve_mouse_get_location(window_handler: id) -> NSPoint {
+    unsafe { glue::ve_mouse_get_location(window_handler) }
+}
+
+pub fn ve_mouse_get_global_location() -> NSPoint {
+    unsafe { glue::ve_mouse_get_global_location() }
+}
+
+mod glue {
+
+    use super::{NSSize, NSPoint, BOOL, id};
+    use libc::{c_int, c_char, c_uint};
+
+    #[link(name = "verdigrisglue")]
+    extern {
+        // window handler
+        pub fn ve_windowhandler_new(size: NSSize, style: c_int) -> id;
+        pub fn ve_windowhandler_set_title(window_handler: id, title: *const c_char);
+        pub fn ve_windowhandler_fetch_events(window_handler: id);
+        pub fn ve_windowhandler_show(window_handler: id);
+        pub fn ve_windowhandler_should_close(window_handler: id) -> BOOL;
+
+        // cursor
+        pub fn ve_cursor_show();
+        pub fn ve_cursor_hide();
+        pub fn ve_cursor_set(cursor: c_uint);
+
+        // mouse
+        pub fn ve_mouse_get_global_location() -> NSPoint;
+        pub fn ve_mouse_get_location(window_handler: id) -> NSPoint;
+    }
 }
