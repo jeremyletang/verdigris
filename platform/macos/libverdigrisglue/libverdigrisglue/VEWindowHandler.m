@@ -70,13 +70,6 @@
     return self->shouldClose;
 }
 
-// delegate functions
-
-- (BOOL) windowShouldClose:(id)sender {
-    self->shouldClose = true;
-    return YES;
-}
-
 - (void) fetchEvents
 {
     [NSApplication sharedApplication];
@@ -86,13 +79,19 @@
                                        untilDate: [NSDate distantPast]
                                           inMode: NSDefaultRunLoopMode
                                          dequeue: YES])) {
-        NSLog(@"%@", event);
         [NSApp sendEvent:event];
     }
 }
 
 - (VEWindow *) getWindow {
     return self->window;
+}
+
+// delegate functions
+
+- (BOOL) windowShouldClose:(id)sender {
+    self->shouldClose = true;
+    return YES;
 }
 
 @end

@@ -17,16 +17,13 @@ void ve_cursor_hide() {
 }
 
 void ve_cursor_set(NSUInteger cursor) {
-    NSLog(@"%d", (int)cursor);
     [NSCursor pop];
-//    if (cursor == 2) {
-//
-//    }
+
     switch ((int)cursor) {
-        case 0: [[NSCursor arrowCursor] push]; NSLog(@"OKAY1");break;
+        case 0: [[NSCursor arrowCursor] push]; break;
         case 1: [[NSCursor IBeamCursor] push]; break;
-        case 2: [[[NSCursor crosshairCursor] init] push]; NSLog(@"OKAY2"); break;
-        case 3: [[NSCursor closedHandCursor] push]; NSLog(@"OKAY");break;
+        case 2: [[[NSCursor crosshairCursor] init] push]; break;
+        case 3: [[NSCursor closedHandCursor] push]; break;
         case 4: [[NSCursor openHandCursor] push]; break;
         case 5: [[NSCursor pointingHandCursor] push]; break;
         case 6: [[NSCursor resizeLeftCursor] push]; break;
@@ -36,8 +33,6 @@ void ve_cursor_set(NSUInteger cursor) {
         case 10: [[NSCursor resizeUpDownCursor] push]; break;
         case 11: [[NSCursor disappearingItemCursor] push]; break;
         case 12: [[NSCursor IBeamCursorForVerticalLayout] push]; break;
-        default: NSLog(@"DEFAULT");
-            break;
+        default: break;
     }
-    NSLog(@"OUT");
 }

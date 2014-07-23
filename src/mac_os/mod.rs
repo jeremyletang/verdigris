@@ -28,5 +28,6 @@ pub use self::window_mask::WindowMask;
 pub mod window_mask;
 pub mod cursor_impl;
 pub mod mouse_impl;
+pub mod native_keyboard;
 mod window_impl;
 mod ffi;
