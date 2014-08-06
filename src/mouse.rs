@@ -20,6 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+//! Mouse button definition and real time access
+
 use native::Wrapper;
 use native_impl::mouse_impl;
 use window::Window;

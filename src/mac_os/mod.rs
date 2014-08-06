@@ -29,5 +29,6 @@ pub mod window_mask;
 pub mod cursor_impl;
 pub mod mouse_impl;
 pub mod native_keyboard;
+pub mod gl_impl;
 mod window_impl;
 mod ffi;

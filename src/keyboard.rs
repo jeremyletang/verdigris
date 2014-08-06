@@ -20,6 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+//! Keyboard key definition and real time access
+
 #[deriving(Clone, PartialEq, Eq, PartialOrd, Ord, Show)]
 pub enum Key {
     A,

@@ -20,14 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-//! Available window creation styles
+//! GL management function (proc_address, etc...)
 
-#[deriving(Clone, Show, PartialEq, Eq, PartialOrd, Ord)]
-pub enum WindowStyle {
-   Borderless,
-   Titled,
-   Closable,
-   Miniaturizable,
-   Resizable,
-   TexturedBackground
+use libc::c_void;
+
+use native_impl::gl_impl;
+
+pub fn get_proc_address(proc_name: &str) -> *const c_void {
+    gl_impl::get_proc_address(proc_name)
 }

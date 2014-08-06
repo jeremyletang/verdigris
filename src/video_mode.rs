@@ -20,6 +20,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+//! Mode to create a window
+
+/// Mode to create a window
 #[deriving(Clone, Show, PartialEq, PartialOrd, Eq, Ord, Hash)]
 pub struct VideoMode {
     pub width: i32,

@@ -103,10 +103,14 @@ pub fn ve_mouse_get_global_location() -> NSPoint {
     unsafe { glue::ve_mouse_get_global_location() }
 }
 
+pub fn ve_get_proc_address(proc_name: *const c_char) -> *const c_void {
+    unsafe { glue::ve_get_proc_address(proc_name) }
+}
+
 mod glue {
 
     use super::{NSSize, NSPoint, BOOL, id};
-    use libc::{c_int, c_char, c_uint};
+    use libc::{c_int, c_char, c_uint, c_void};
 
     #[link(name = "verdigrisglue")]
     extern {
@@ -125,5 +129,8 @@ mod glue {
         // mouse
         pub fn ve_mouse_get_global_location() -> NSPoint;
         pub fn ve_mouse_get_location(window_handler: id) -> NSPoint;
+
+        // gl
+        pub fn ve_get_proc_address(proc_name: *const c_char) -> *const c_void;
     }
 }

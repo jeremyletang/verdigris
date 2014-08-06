@@ -20,7 +20,36 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+//! Window, keyboard and mouse related events handling
+
 use keyboard::Key;
+
+#[deriving(Clone, PartialEq, PartialOrd, Show)]
+pub enum Event {
+    Close,
+    Move {
+        pub x: i32,
+        pub y: i32
+    },
+    Resize {
+        pub x: i32,
+        pub y: i32
+    },
+    KeyUp(Key),
+    KeyDown(Key),
+    MouseMoved {
+        pub x: i32,
+        pub y: i32
+    },
+    LeftMouseDown,
+    LeftMouseUp,
+    RightMouseDown,
+    RightMouseUp,
+    ScrollWheelUp(f32),
+    ScrollWheelDown(f32),
+    MouseEntered,
+    MouseExited
+}
 
 #[doc(hidden)]
 pub mod raw {
@@ -117,31 +146,4 @@ pub mod raw {
             unsafe { ::std::mem::transmute(self) }
         }
     }
-}
-
-#[deriving(Clone, PartialEq, PartialOrd, Show)]
-pub enum Event {
-    Close,
-    Move {
-        x: i32,
-        y: i32
-    },
-    Resize {
-        x: i32,
-        y: i32
-    },
-    KeyUp(Key),
-    KeyDown(Key),
-    MouseMoved {
-        x: i32,
-        y: i32
-    },
-    LeftMouseDown,
-    LeftMouseUp,
-    RightMouseDown,
-    RightMouseUp,
-    ScrollWheelUp(f32),
-    ScrollWheelDown(f32),
-    MouseEntered,
-    MouseExited
 }

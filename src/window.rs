@@ -20,11 +20,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+//! A native OpenGL window
+
 use native::{NativeWindow, Wrapper};
 use native_impl::WindowImpl;
 use video_mode::VideoMode;
 use window_style::WindowStyle;
 
+/// A native OpenGL window
 pub struct Window {
     window_impl: WindowImpl,
     on_error: Option<|&str|: 'static>,

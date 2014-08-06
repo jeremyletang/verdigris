@@ -20,42 +20,48 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#![crate_name = "verdigris"]
-#![desc = "Multi plateform opengl windowing for Rust"]
-#![license = "MIT"]
-#![crate_type = "rlib"]
-#![crate_type = "dylib"]
-#![allow(dead_code, non_camel_case_types, missing_doc)]
-#![feature(struct_variant)]
-#![unstable]
+//! Helper struct to create windows easily
 
-extern crate libc;
+use window::Window;
+use video_mode::VideoMode;
+use window_style::WindowStyle;
 
-pub use self::window::Window;
-pub use self::video_mode::VideoMode;
-pub use self::window_builder::WindowBuilder;
-pub use self::context_settings::ContextSettings;
+/// Helper struct to create windows easily
+pub struct WindowBuilder {
+    style: Option<Vec<WindowStyle>>,
+    video_mode: Option<VideoMode>,
+    title: Option<String>
+}
 
-#[cfg(target_os = "macos")]
-#[path = "mac_os/mod.rs"]
-mod native_impl;
+impl WindowBuilder {
+    pub fn new() -> WindowBuilder {
+        WindowBuilder {
+            style: None,
+            video_mode: None,
+            title: None
+        }
+    }
 
-#[cfg(target_os = "wind32")]
-#[path = "windows/mod.rs"]
-mod native_impl;
+    pub fn title(mut self, title: &str) -> WindowBuilder{
+        self.title = Some(title.to_string());
+        self
+    }
 
-#[cfg(target_os = "linux")]
-#[path = "linux/mod.rs"]
-mod native_impl;
+    pub fn video_mode(mut self, video_mode: VideoMode) -> WindowBuilder {
+        self.video_mode = Some(video_mode);
+        self
+    }
 
-mod native;
-mod window;
-mod video_mode;
-mod window_builder;
-mod context_settings;
-pub mod window_style;
-pub mod event;
-pub mod keyboard;
-pub mod cursor;
-pub mod mouse;
-pub mod gl;
+    pub fn style(mut self, style: &[WindowStyle]) -> WindowBuilder {
+        self.style = Some(style.to_vec());
+        self
+    }
+
+    pub fn create(&self) -> Window {
+        let style = self.style.as_ref().clone();
+        let title = self.title.as_ref().clone();
+        Window::new(self.video_mode.unwrap(),
+                    style.unwrap().as_slice(),
+                    title.unwrap().as_slice())
+    }
+}

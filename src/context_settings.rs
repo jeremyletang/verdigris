@@ -20,14 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-//! Available window creation styles
+//! Settings for OpenGL context creation
 
-#[deriving(Clone, Show, PartialEq, Eq, PartialOrd, Ord)]
-pub enum WindowStyle {
-   Borderless,
-   Titled,
-   Closable,
-   Miniaturizable,
-   Resizable,
-   TexturedBackground
+/// Settings for OpenGL context creation
+pub struct ContextSettings {
+    gl_major: i32,
+    gl_minor: i32
 }
