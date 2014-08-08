@@ -20,15 +20,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use libc::c_void;
+use imp::ffi;
+use cursor::{Cursor, Arrow};
 
-use native_impl::ffi;
-
-// see: https://developer.apple.com/library/mac/documentation/GraphicsImaging/Conceptual/
-// OpenGL-MacProgGuide/opengl_entrypts/opengl_entrypts.html#//apple_ref/doc/uid/TP40001987-CH402-SW2
-pub fn get_proc_address(proc_name: &str) -> *const c_void {
-    let _proc_name = "_".to_string() + proc_name;
-    proc_name.with_c_str(|c_str|{
-        ffi::ve_get_proc_address(c_str)
-    })
+pub fn show() {
+    ffi::ve_cursor_show()
 }
+
+pub fn hide() {
+    ffi::ve_cursor_hide()
+}
+
+pub fn set(cursor: Cursor) {
+    ffi::ve_cursor_set(cursor as u32)
+}
+
+pub fn get_default() -> Cursor { Arrow }

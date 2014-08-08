@@ -20,19 +20,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use native_impl::ffi;
-use cursor::{Cursor, Arrow};
+use imp::ffi;
+use imp::window::WindowImpl;
 
-pub fn show() {
-    ffi::ve_cursor_show()
+pub fn location(window: &WindowImpl) -> (i32, i32) {
+    let point = ffi::ve_mouse_get_location(window.window_handler);
+    (point.x as i32, point.y as i32)
 }
 
-pub fn hide() {
-    ffi::ve_cursor_hide()
+pub fn screen_location() -> (i32, i32) {
+    let point = ffi::ve_mouse_get_global_location();
+    (point.x as i32, point.y as i32)
 }
-
-pub fn set(cursor: Cursor) {
-    ffi::ve_cursor_set(cursor as u32)
-}
-
-pub fn get_default() -> Cursor { Arrow }

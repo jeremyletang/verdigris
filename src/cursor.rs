@@ -22,7 +22,7 @@
 
 //! Cursor handling
 
-use native_impl::cursor_impl;
+use imp;
 
 #[repr(u32)]
 #[deriving(Clone, PartialEq, PartialOrd, Show)]
@@ -44,18 +44,18 @@ pub enum Cursor {
 }
 
 pub fn get_default() -> Cursor {
-    cursor_impl::get_default()
+    imp::cursor::get_default()
 }
 
 pub fn show() {
-    cursor_impl::show()
+    imp::cursor::show()
 }
 
 pub fn hide() {
-    cursor_impl::hide()
+    imp::cursor::hide()
 }
 
 pub fn set(cursor: Cursor) {
-    cursor_impl::set(cursor)
+    imp::cursor::set(cursor)
 }
 

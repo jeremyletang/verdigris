@@ -22,8 +22,8 @@
 
 //! Mouse button definition and real time access
 
+use imp;
 use native::Wrapper;
-use native_impl::mouse_impl;
 use window::Window;
 
 #[deriving(Clone, Show, PartialEq, PartialOrd)]
@@ -34,9 +34,9 @@ pub enum MouseButton {
 }
 
 pub fn location(window: &Window) -> (i32, i32) {
-    mouse_impl::location(window.unwrap())
+    imp::mouse::location(window.unwrap())
 }
 
 pub fn screen_location() -> (i32, i32) {
-    mouse_impl::screen_location()
+    imp::mouse::screen_location()
 }

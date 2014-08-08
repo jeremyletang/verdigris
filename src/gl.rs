@@ -24,8 +24,8 @@
 
 use libc::c_void;
 
-use native_impl::gl_impl;
+use imp;
 
 pub fn get_proc_address(proc_name: &str) -> *const c_void {
-    gl_impl::get_proc_address(proc_name)
+    imp::gl::get_proc_address(proc_name)
 }

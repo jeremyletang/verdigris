@@ -23,7 +23,7 @@
 #![allow(unused_variable, unused_unsafe)]
 
 use native::NativeWindow;
-use native_impl::{ffi, window_mask};
+use imp::{ffi, window_mask};
 use window_style::WindowStyle;
 use video_mode::VideoMode;
 

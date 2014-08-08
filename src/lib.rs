@@ -27,6 +27,7 @@
 #![crate_type = "dylib"]
 #![allow(dead_code, non_camel_case_types, missing_doc)]
 #![feature(struct_variant)]
+#![feature(globs)]
 #![unstable]
 
 extern crate libc;
@@ -38,15 +39,15 @@ pub use self::context_settings::ContextSettings;
 
 #[cfg(target_os = "macos")]
 #[path = "mac_os/mod.rs"]
-mod native_impl;
+mod imp;
 
 #[cfg(target_os = "wind32")]
 #[path = "windows/mod.rs"]
-mod native_impl;
+mod imp;
 
 #[cfg(target_os = "linux")]
 #[path = "linux/mod.rs"]
-mod native_impl;
+mod imp;
 
 mod native;
 mod window;

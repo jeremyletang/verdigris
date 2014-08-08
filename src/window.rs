@@ -23,7 +23,7 @@
 //! A native OpenGL window
 
 use native::{NativeWindow, Wrapper};
-use native_impl::WindowImpl;
+use imp::WindowImpl;
 use video_mode::VideoMode;
 use window_style::WindowStyle;
 

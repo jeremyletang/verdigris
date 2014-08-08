@@ -20,15 +20,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use native_impl::ffi;
-use native_impl::window_impl::WindowImpl;
+use libc::c_void;
 
-pub fn location(window: &WindowImpl) -> (i32, i32) {
-    let point = ffi::ve_mouse_get_location(window.window_handler);
-    (point.x as i32, point.y as i32)
-}
+use imp::ffi;
 
-pub fn screen_location() -> (i32, i32) {
-    let point = ffi::ve_mouse_get_global_location();
-    (point.x as i32, point.y as i32)
+// see: https://developer.apple.com/library/mac/documentation/GraphicsImaging/Conceptual/
+// OpenGL-MacProgGuide/opengl_entrypts/opengl_entrypts.html#//apple_ref/doc/uid/TP40001987-CH402-SW2
+pub fn get_proc_address(proc_name: &str) -> *const c_void {
+    let _proc_name = "_".to_string() + proc_name;
+    proc_name.with_c_str(|c_str|{
+        ffi::ve_get_proc_address(c_str)
+    })
 }
