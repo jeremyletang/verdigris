@@ -21,6 +21,8 @@
 		3F76C00C1976B77C008481A2 /* VEWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F76C00A1976B77C008481A2 /* VEWindow.m */; };
 		3F76C00F1976B7B0008481A2 /* VEWindowHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F76C00D1976B7B0008481A2 /* VEWindowHandler.h */; };
 		3F76C0101976B7B0008481A2 /* VEWindowHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F76C00E1976B7B0008481A2 /* VEWindowHandler.m */; };
+		3FDC11741994CA32002967D0 /* VeGL.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FDC11721994CA32002967D0 /* VeGL.h */; };
+		3FDC11751994CA32002967D0 /* VeGL.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDC11731994CA32002967D0 /* VeGL.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		3F76C00A1976B77C008481A2 /* VEWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEWindow.m; sourceTree = "<group>"; };
 		3F76C00D1976B7B0008481A2 /* VEWindowHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEWindowHandler.h; sourceTree = "<group>"; };
 		3F76C00E1976B7B0008481A2 /* VEWindowHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEWindowHandler.m; sourceTree = "<group>"; };
+		3FDC11721994CA32002967D0 /* VeGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeGL.h; sourceTree = "<group>"; };
+		3FDC11731994CA32002967D0 /* VeGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeGL.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,8 @@
 				3F1DD509197CF09F00881415 /* VECursor.m */,
 				3F69B496198018E1000E15B2 /* VEMouse.h */,
 				3F69B497198018E1000E15B2 /* VEMouse.m */,
+				3FDC11721994CA32002967D0 /* VeGL.h */,
+				3FDC11731994CA32002967D0 /* VeGL.m */,
 			);
 			path = libverdigrisglue;
 			sourceTree = "<group>";
@@ -165,6 +171,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FDC11741994CA32002967D0 /* VeGL.h in Headers */,
 				3F1DD50A197CF09F00881415 /* VECursor.h in Headers */,
 				3F76C00F1976B7B0008481A2 /* VEWindowHandler.h in Headers */,
 				3F76C00B1976B77C008481A2 /* VEWindow.h in Headers */,
@@ -258,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FDC11751994CA32002967D0 /* VeGL.m in Sources */,
 				3F69B499198018E1000E15B2 /* VEMouse.m in Sources */,
 				3F1DD50B197CF09F00881415 /* VECursor.m in Sources */,
 				3F76C00C1976B77C008481A2 /* VEWindow.m in Sources */,
