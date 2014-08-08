@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 libverdigris. All rights reserved.
 //
 
-#import "VEWindowHandler.h"
+#import "ve_window_handler.h"
 
 @implementation VEWindowHandler
 

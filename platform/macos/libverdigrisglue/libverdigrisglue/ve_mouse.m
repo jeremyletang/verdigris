@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 libverdigris. All rights reserved.
 //
 
-#import "VEMouse.h"
+#import "ve_mouse.h"
 
 NSPoint ve_mouse_get_global_location() {
     return [NSEvent mouseLocation];

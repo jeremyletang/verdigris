@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "VEWindowHandler.h"
+#import "ve_window_handler.h"
 
 NSPoint ve_mouse_get_location();
 NSPoint ve_mouse_get_global_location();

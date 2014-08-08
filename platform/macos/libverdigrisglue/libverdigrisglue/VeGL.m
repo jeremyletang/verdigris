@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 libverdigris. All rights reserved.
 //
 
-#import "VeGL.h"
+#import "ve_gl.h"
 #import <mach-o/dyld.h>
 
 void *ve_get_proc_address(const char *proc_name) {

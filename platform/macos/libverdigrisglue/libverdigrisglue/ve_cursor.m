@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 libverdigris. All rights reserved.
 //
 
-#import "VECursor.h"
+#import "ve_cursor.h"
 
 void ve_cursor_show() {
     [NSCursor unhide];

@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "VEWindow.h"
+#import "ve_window.h"
 
 id ve_windowhandler_new(NSSize size, NSUInteger style);
 void ve_windowhandler_set_title(id window_handler, const char *title);
