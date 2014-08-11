@@ -1,5 +1,5 @@
 //
-//  NSObject+VECursor.m
+//  ve_cursor.m
 //  libverdigrisglue
 //
 //  Created by Jeremy on 21/07/2014.

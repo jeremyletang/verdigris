@@ -1,5 +1,5 @@
 //
-//  VEMouse.h
+//  ve_mouse.h
 //  libverdigrisglue
 //
 //  Created by Jeremy on 23/07/2014.

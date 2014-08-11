@@ -1,5 +1,5 @@
 //
-//  VeGL.m
+//  ve_gl.m
 //  libverdigrisglue
 //
 //  Created by Jeremy on 08/08/2014.

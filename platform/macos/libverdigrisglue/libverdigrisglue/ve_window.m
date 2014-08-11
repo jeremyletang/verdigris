@@ -1,5 +1,5 @@
 //
-//  VEWindow.m
+//  ve_window.m
 //  libverdigrisglue
 //
 //  Created by Jeremy on 16/07/2014.

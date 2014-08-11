@@ -24,11 +24,27 @@ use libc::c_void;
 
 use imp::ffi;
 
-// see: https://developer.apple.com/library/mac/documentation/GraphicsImaging/Conceptual/
-// OpenGL-MacProgGuide/opengl_entrypts/opengl_entrypts.html#//apple_ref/doc/uid/TP40001987-CH402-SW2
-pub fn get_proc_address(proc_name: &str) -> *const c_void {
-    let _proc_name = "_".to_string() + proc_name;
-    proc_name.with_c_str(|c_str|{
-        ffi::ve_get_proc_address(c_str)
-    })
+// pub fn get_proc_address(proc_name: &str) -> *const c_void {
+//     let _proc_name = "_".to_string() + proc_name;
+//     proc_name.with_c_str(|c_str|{
+//         ffi::ve_get_proc_address(c_str)
+//     })
+// }
+
+pub fn get_proc_address(proc_name: &str) ->  *const c_void {
+    // get mac os opengl bundle
+    let id = "com.apple.opengl".with_c_str(|c_str| ffi::__CFStringMakeConstantString(c_str));
+    let bundle = ffi::CFBundleGetBundleWithIdentifier(id);
+    if bundle.is_null() { return ::std::ptr::null(); } // bundle not found
+
+    // find the symbole in the bundle
+    let mut symbol: *const c_void;
+    let cf_proc_name = proc_name.with_c_str(|c_str| ffi::__CFStringMakeConstantString(c_str));
+    symbol = ffi::CFBundleGetFunctionPointerForName(bundle, cf_proc_name);
+
+    // release CFStringRef
+    ffi::CFRelease(cf_proc_name);
+
+    // the symbol or null if not found
+    symbol
 }

@@ -134,3 +134,37 @@ mod glue {
         pub fn ve_get_proc_address(proc_name: *const c_char) -> *const c_void;
     }
 }
+
+#[allow(non_snake_case_functions)]
+pub fn __CFStringMakeConstantString(c: *const c_char) -> *const c_void {
+    unsafe { cf::__CFStringMakeConstantString(c) }
+}
+
+#[allow(non_snake_case_functions)]
+pub fn CFBundleGetBundleWithIdentifier(ptr: *const c_void) -> *const c_void {
+    unsafe { cf::CFBundleGetBundleWithIdentifier(ptr) }
+}
+
+#[allow(non_snake_case_functions)]
+pub fn CFBundleGetFunctionPointerForName(p1: *const c_void, p2: *const c_void) -> *const c_void {
+    unsafe { cf::CFBundleGetFunctionPointerForName(p1, p2) }
+}
+
+#[allow(non_snake_case_functions)]
+pub fn CFRelease(cfstr: *const c_void) {
+    unsafe { cf::CFRelease(cfstr) }
+}
+
+mod cf {
+
+    use libc::{c_char, c_void};
+
+    #[link(name = "CoreFoundation", kind = "framework")]
+    #[link(name = "Cocoa", kind = "framework")]
+    extern "C" {
+        pub fn __CFStringMakeConstantString(c: *const c_char) -> *const c_void;
+        pub fn CFBundleGetBundleWithIdentifier(ptr: *const c_void) -> *const c_void;
+        pub fn CFBundleGetFunctionPointerForName(p1: *const c_void, p2: *const c_void) -> *const c_void;
+        pub fn CFRelease(cfstr: *const c_void);
+    }
+}
