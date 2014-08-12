@@ -24,6 +24,8 @@ use libc::c_void;
 
 use imp::ffi;
 
+local_data_key!(key_bundle: *const c_void)
+
 // pub fn get_proc_address(proc_name: &str) -> *const c_void {
 //     let _proc_name = "_".to_string() + proc_name;
 //     proc_name.with_c_str(|c_str|{
@@ -33,9 +35,16 @@ use imp::ffi;
 
 pub fn get_proc_address(proc_name: &str) ->  *const c_void {
     // get mac os opengl bundle
-    let id = "com.apple.opengl".with_c_str(|c_str| ffi::__CFStringMakeConstantString(c_str));
-    let bundle = ffi::CFBundleGetBundleWithIdentifier(id);
-    if bundle.is_null() { return ::std::ptr::null(); } // bundle not found
+    let bundle = match key_bundle.get() {
+        Some(b) => *b,
+        None => {
+            let id = "com.apple.opengl".with_c_str(|c_str| ffi::__CFStringMakeConstantString(c_str));
+            let bundle = ffi::CFBundleGetBundleWithIdentifier(id);
+            if bundle.is_null() { return ::std::ptr::null(); } // bundle not found
+            key_bundle.replace(Some(bundle));
+            bundle
+        }
+    };
 
     // find the symbole in the bundle
     let mut symbol: *const c_void;
