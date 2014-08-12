@@ -34,15 +34,23 @@ pub struct WindowImpl {
 }
 
 impl NativeWindow for WindowImpl {
-    fn create(mode: VideoMode, style: &[WindowStyle], title: &str, settings: ContextSettings) -> WindowImpl {
+    fn create(mode: VideoMode, 
+             style: &[WindowStyle], 
+             title: &str, 
+             settings: ContextSettings) -> Option<WindowImpl> {
         let w_mask = window_mask::from_windowstyle(style);
         let w_size = ffi::NSSize { width: mode.width as f64, height: mode.height as f64 };
         let w_settings =context_settings::from_struct(&settings);
         let w_handler = ffi::ve_windowhandler_new(w_size, w_mask, w_settings.as_ptr());
         title.with_c_str(|c_str| ffi::ve_windowhandler_set_title(w_handler, c_str));
-        WindowImpl {
-            window_handler: w_handler,
-            title: title.to_string()
+
+        if w_handler.ptr.is_null() {
+            None
+        } else {
+            Some(WindowImpl {
+                window_handler: w_handler,
+                title: title.to_string()
+            })
         }
     }
 
@@ -111,7 +119,7 @@ impl NativeWindow for WindowImpl {
         ffi::ve_windowhandler_fetch_events(self.window_handler)
     }
 
-    fn display(&mut self) {
+    fn swap_buffers(&mut self) {
         ffi::ve_windowhandler_swap_buffers(self.window_handler)
     }
 

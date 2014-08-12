@@ -36,11 +36,21 @@ pub struct Window {
 }
 
 impl Window {
-    pub fn new(mode: VideoMode, style: &[WindowStyle], title: &str, settings: ContextSettings) -> Window {
-        Window {
-            window_impl: NativeWindow::create(mode.clone(), style, title, settings),
-            on_error: None,
-            video_mode: mode
+    pub fn new(mode: VideoMode,
+               style: &[WindowStyle],
+               title: &str,
+               settings: ContextSettings) -> Option<Window> {
+        let native_window = NativeWindow::create(mode.clone(), style, title, settings);
+
+        match native_window {
+            Some(nw) => {
+                Some(Window {
+                    window_impl: nw,
+                    on_error: None,
+                    video_mode: mode
+                })
+            }
+            None => None
         }
     }
 
@@ -113,8 +123,8 @@ impl Window {
         self.window_impl.poll_event()
     }
 
-    pub fn display(&mut self) {
-        self.window_impl.display()
+    pub fn swap_buffers(&mut self) {
+        self.window_impl.swap_buffers()
     }
 }
 

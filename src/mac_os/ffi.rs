@@ -42,7 +42,7 @@ pub fn to_BOOL(value: bool) -> BOOL {
 
 #[deriving(Clone, PartialEq, PartialOrd, Show)]
 pub struct id {
-    ptr: *mut c_void
+    pub ptr: *mut c_void
 }
 
 #[deriving(Clone, PartialEq, PartialOrd, Show, Default)]

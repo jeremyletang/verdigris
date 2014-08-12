@@ -65,7 +65,7 @@ impl WindowBuilder {
         self
     }
 
-    pub fn create(self) -> Window {
+    pub fn create(self) -> Option<Window> {
         let style = match self.style {
             Some(ref s) => s.clone(),
             None => vec![]

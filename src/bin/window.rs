@@ -12,14 +12,15 @@ fn main() {
         .style(&[Titled, Closable, Resizable, Miniaturizable])
         .title("Hey a new NSWindow !")
         .settings(ContextSettings::new())
-        .create();
+        .create()
+        .expect("Cannot create window !");
 
     window.show();
     while !window.should_close() {
         window.poll_event();
         gl::ClearColor(0.9, 0.1, 0.1, 1.0);
         gl::Clear(gl::COLOR_BUFFER_BIT);
-        window.display();
+        window.swap_buffers();
     }
     println!("Goodbye !")
 }
