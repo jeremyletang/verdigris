@@ -30,5 +30,6 @@ pub mod cursor;
 pub mod mouse;
 pub mod keyboard;
 pub mod gl;
+pub mod context_settings;
 mod window;
 mod ffi;

@@ -25,12 +25,14 @@
 use window::Window;
 use video_mode::VideoMode;
 use window_style::WindowStyle;
+use context_settings::ContextSettings;
 
 /// Helper struct to create windows easily
 pub struct WindowBuilder {
     style: Option<Vec<WindowStyle>>,
     video_mode: Option<VideoMode>,
-    title: Option<String>
+    title: Option<String>,
+    settings: Option<ContextSettings>
 }
 
 impl WindowBuilder {
@@ -38,7 +40,8 @@ impl WindowBuilder {
         WindowBuilder {
             style: None,
             video_mode: None,
-            title: None
+            title: None,
+            settings: None
         }
     }
 
@@ -57,11 +60,17 @@ impl WindowBuilder {
         self
     }
 
-    pub fn create(&self) -> Window {
+    pub fn settings(mut self, settings: ContextSettings) -> WindowBuilder {
+        self.settings = Some(settings);
+        self
+    }
+
+    pub fn create(self) -> Window {
         let style = self.style.as_ref().clone();
         let title = self.title.as_ref().clone();
         Window::new(self.video_mode.unwrap(),
                     style.unwrap().as_slice(),
-                    title.unwrap().as_slice())
+                    title.unwrap().as_slice(),
+                    self.settings.unwrap())
     }
 }

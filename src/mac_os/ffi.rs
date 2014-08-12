@@ -63,8 +63,8 @@ pub struct NSSize {
     pub height: f64
 }
 
-pub fn ve_windowhandler_new(size: NSSize, style: c_int) -> id {
-    unsafe { glue::ve_windowhandler_new(size, style) }
+pub fn ve_windowhandler_new(size: NSSize, style: c_int, context: *const u32) -> id {
+    unsafe { glue::ve_windowhandler_new(size, style, context) }
 }
 
 pub fn ve_windowhandler_set_title(window_handler: id, title: *const c_char) {
@@ -107,6 +107,11 @@ pub fn ve_get_proc_address(proc_name: *const c_char) -> *const c_void {
     unsafe { glue::ve_get_proc_address(proc_name) }
 }
 
+pub fn ve_windowhandler_swap_buffers(window_handler: id) {
+    unsafe {  glue::ve_windowhandler_swap_buffers(window_handler) }
+}
+
+
 mod glue {
 
     use super::{NSSize, NSPoint, BOOL, id};
@@ -115,11 +120,12 @@ mod glue {
     #[link(name = "verdigrisglue")]
     extern {
         // window handler
-        pub fn ve_windowhandler_new(size: NSSize, style: c_int) -> id;
+        pub fn ve_windowhandler_new(size: NSSize, style: c_int, context: *const u32) -> id;
         pub fn ve_windowhandler_set_title(window_handler: id, title: *const c_char);
         pub fn ve_windowhandler_fetch_events(window_handler: id);
         pub fn ve_windowhandler_show(window_handler: id);
         pub fn ve_windowhandler_should_close(window_handler: id) -> BOOL;
+        pub fn ve_windowhandler_swap_buffers(window_handler: id);
 
         // cursor
         pub fn ve_cursor_show();
@@ -168,3 +174,7 @@ mod cf {
         pub fn CFRelease(cfstr: *const c_void);
     }
 }
+
+// vsync
+//     GLint swapInterval = enabled ? 1 : 0;
+//     [m_context setValues:&swapInterval forParameter:NSOpenGLCPSwapInterval];

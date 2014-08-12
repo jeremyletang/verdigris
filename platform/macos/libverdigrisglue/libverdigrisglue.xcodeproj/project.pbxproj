@@ -11,6 +11,8 @@
 		3F1DD50B197CF09F00881415 /* ve_cursor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1DD509197CF09F00881415 /* ve_cursor.m */; };
 		3F69B498198018E1000E15B2 /* ve_mouse.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F69B496198018E1000E15B2 /* ve_mouse.h */; };
 		3F69B499198018E1000E15B2 /* ve_mouse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F69B497198018E1000E15B2 /* ve_mouse.m */; };
+		3F73191A199A0B2600CEB922 /* ve_view.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F731918199A0B2600CEB922 /* ve_view.h */; };
+		3F73191B199A0B2600CEB922 /* ve_view.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F731919199A0B2600CEB922 /* ve_view.m */; };
 		3F76BFE31976B75D008481A2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F76BFE21976B75D008481A2 /* Cocoa.framework */; };
 		3F76BFF41976B75D008481A2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F76BFF31976B75D008481A2 /* XCTest.framework */; };
 		3F76BFF51976B75D008481A2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F76BFE21976B75D008481A2 /* Cocoa.framework */; };
@@ -40,6 +42,8 @@
 		3F1DD509197CF09F00881415 /* ve_cursor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ve_cursor.m; sourceTree = "<group>"; };
 		3F69B496198018E1000E15B2 /* ve_mouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ve_mouse.h; sourceTree = "<group>"; };
 		3F69B497198018E1000E15B2 /* ve_mouse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ve_mouse.m; sourceTree = "<group>"; };
+		3F731918199A0B2600CEB922 /* ve_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ve_view.h; sourceTree = "<group>"; };
+		3F731919199A0B2600CEB922 /* ve_view.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ve_view.m; sourceTree = "<group>"; };
 		3F76BFDF1976B75D008481A2 /* libverdigrisglue.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libverdigrisglue.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F76BFE21976B75D008481A2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3F76BFE51976B75D008481A2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -134,6 +138,8 @@
 				3F69B497198018E1000E15B2 /* ve_mouse.m */,
 				3FDC11721994CA32002967D0 /* ve_gl.h */,
 				3FDC11731994CA32002967D0 /* ve_gl.m */,
+				3F731918199A0B2600CEB922 /* ve_view.h */,
+				3F731919199A0B2600CEB922 /* ve_view.m */,
 			);
 			path = libverdigrisglue;
 			sourceTree = "<group>";
@@ -175,6 +181,7 @@
 				3F1DD50A197CF09F00881415 /* ve_cursor.h in Headers */,
 				3F76C00F1976B7B0008481A2 /* ve_window_handler.h in Headers */,
 				3F76C00B1976B77C008481A2 /* ve_window.h in Headers */,
+				3F73191A199A0B2600CEB922 /* ve_view.h in Headers */,
 				3F69B498198018E1000E15B2 /* ve_mouse.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +277,7 @@
 				3F1DD50B197CF09F00881415 /* ve_cursor.m in Sources */,
 				3F76C00C1976B77C008481A2 /* ve_window.m in Sources */,
 				3F76C0101976B7B0008481A2 /* ve_window_handler.m in Sources */,
+				3F73191B199A0B2600CEB922 /* ve_view.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

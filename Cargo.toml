@@ -3,3 +3,6 @@ name = "verdigris"
 version = "0.0.1"
 authors = ["Jeremy Letang <letang.jeremy@gmail.com>"]
 build = "make"
+
+[dependencies.gl]
+git = "https://github.com/bjz/gl-rs.git"

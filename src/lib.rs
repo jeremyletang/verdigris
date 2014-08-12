@@ -53,7 +53,7 @@ mod native;
 mod window;
 mod video_mode;
 mod window_builder;
-mod context_settings;
+pub mod context_settings;
 pub mod window_style;
 pub mod event;
 pub mod keyboard;

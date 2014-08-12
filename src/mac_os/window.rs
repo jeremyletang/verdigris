@@ -23,9 +23,10 @@
 #![allow(unused_variable, unused_unsafe)]
 
 use native::NativeWindow;
-use imp::{ffi, window_mask};
+use imp::{ffi, window_mask, context_settings};
 use window_style::WindowStyle;
 use video_mode::VideoMode;
+use context_settings::ContextSettings;
 
 pub struct WindowImpl {
     pub window_handler: ffi::id,
@@ -33,10 +34,11 @@ pub struct WindowImpl {
 }
 
 impl NativeWindow for WindowImpl {
-    fn create(mode: VideoMode, style: &[WindowStyle], title: &str) -> WindowImpl {
+    fn create(mode: VideoMode, style: &[WindowStyle], title: &str, settings: ContextSettings) -> WindowImpl {
         let w_mask = window_mask::from_windowstyle(style);
         let w_size = ffi::NSSize { width: mode.width as f64, height: mode.height as f64 };
-        let w_handler = ffi::ve_windowhandler_new(w_size, w_mask);
+        let w_settings =context_settings::from_struct(&settings);
+        let w_handler = ffi::ve_windowhandler_new(w_size, w_mask, w_settings.as_ptr());
         title.with_c_str(|c_str| ffi::ve_windowhandler_set_title(w_handler, c_str));
         WindowImpl {
             window_handler: w_handler,
@@ -107,6 +109,10 @@ impl NativeWindow for WindowImpl {
 
     fn poll_event(&mut self) {
         ffi::ve_windowhandler_fetch_events(self.window_handler)
+    }
+
+    fn display(&mut self) {
+        ffi::ve_windowhandler_swap_buffers(self.window_handler)
     }
 
 }

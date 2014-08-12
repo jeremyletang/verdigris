@@ -26,6 +26,7 @@ use native::{NativeWindow, Wrapper};
 use imp::WindowImpl;
 use video_mode::VideoMode;
 use window_style::WindowStyle;
+use context_settings::ContextSettings;
 
 /// A native OpenGL window
 pub struct Window {
@@ -35,9 +36,9 @@ pub struct Window {
 }
 
 impl Window {
-    pub fn new(mode: VideoMode, style: &[WindowStyle], title: &str) -> Window {
+    pub fn new(mode: VideoMode, style: &[WindowStyle], title: &str, settings: ContextSettings) -> Window {
         Window {
-            window_impl: NativeWindow::create(mode.clone(), style, title),
+            window_impl: NativeWindow::create(mode.clone(), style, title, settings),
             on_error: None,
             video_mode: mode
         }
@@ -110,6 +111,10 @@ impl Window {
 
     pub fn poll_event(&mut self) {
         self.window_impl.poll_event()
+    }
+
+    pub fn display(&mut self) {
+        self.window_impl.display()
     }
 }
 

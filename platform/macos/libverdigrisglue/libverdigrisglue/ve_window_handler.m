@@ -8,9 +8,30 @@
 
 #import "ve_window_handler.h"
 
+static NSOpenGLContext*
+createGLContext(uint32_t pixelAttrs[]) {
+//    NSOpenGLPixelFormatAttribute pixelAttrs[] = {
+//        NSOpenGLPFADoubleBuffer,
+//        NSOpenGLPFAOpenGLProfile, NSOpenGLProfileVersion3_2Core,
+//        NSOpenGLPFAColorSize, 24,
+//        NSOpenGLPFAAlphaSize, 8,
+//        NSOpenGLPFADepthSize, 24,
+//        NSOpenGLPFAStencilSize, 8,
+//        NSOpenGLPFASampleBuffers, 0,
+//        0,
+//    };
+    
+    NSOpenGLPixelFormat* pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:pixelAttrs];
+    
+    NSOpenGLContext* glContext = [[NSOpenGLContext alloc]
+                                  initWithFormat:pixelFormat
+                                  shareContext:NULL];
+    return glContext;
+}
+
 @implementation VEWindowHandler
 
-- (id) initWithSize:(NSSize)size AndWindowStyle:(NSUInteger)style {
+- (id) initWithSize:(NSSize)size WindowStyle:(NSUInteger)style AndContext:(NSOpenGLPixelFormatAttribute[])context {
     // check if we are in the main thread
     if ([NSThread currentThread] != [NSThread mainThread]) {
         NSLog(@"Cannot create a new window outside the main thread.");
@@ -35,17 +56,24 @@
                                                        defer: NO];
 
 
-        //        // Create the view.
-        //        self->glView = [[NSOpenGLView alloc] initWithFrame:[[self->window contentView] frame]];
-        //
-        //        if (self->glView == nil) {
-        //            NSLog(@"Could not create an instance of NSOpenGLView ");
-        //            return nil;
-        //        }
-        //
-        //        // Set the view to the window as its content view.
-        //        [self->window setContentView:self->glView];
+        // Create the view.
+        self->glContext = createGLContext(context);
+        self->glView = [[VEView alloc] initWithFrame:[[self->window contentView] frame]];
+//        [self->glView makeContextCurrent];
+        
+        if (self->glView == nil) {
+            NSLog(@"Could not create an instance of NSOpenGLView ");
+            return nil;
+        }
+        
+        // Set the view to the window as its content view.
+        [self->window setContentView:self->glView];
 
+        
+        [glContext makeCurrentContext];
+        [glContext setView:glView];
+        [glView display];
+        
         [self->window setDelegate: self];
         [self->window setAcceptsMouseMovedEvents: YES];
         [self->window setIgnoresMouseEvents: NO];
@@ -94,11 +122,16 @@
     return YES;
 }
 
+- (NSOpenGLContext*) getContext {
+    return self->glContext;
+}
+
 @end
 
-id ve_windowhandler_new(NSSize size, NSUInteger style) {
+id ve_windowhandler_new(NSSize size, NSUInteger style, uint32_t context[]) {
     return [[VEWindowHandler alloc] initWithSize: size
-                                  AndWindowStyle:style];
+                                     WindowStyle:style
+                                      AndContext: context];
 }
 
 void ve_windowhandler_set_title(id window_handler, const char *title) {
@@ -115,4 +148,8 @@ void ve_windowhandler_show(id window_handler) {
 
 BOOL ve_windowhandler_should_close(id window_handler) {
     return [window_handler shouldClose];
+}
+
+void ve_windowhandler_swap_buffers(id window_handler) {
+    [[window_handler getContext] flushBuffer];
 }
