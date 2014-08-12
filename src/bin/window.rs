@@ -1,16 +1,19 @@
 extern crate verdigris;
 extern crate gl;
 
-use verdigris::{Window, VideoMode, ContextSettings};
+use verdigris::{WindowBuilder, VideoMode, ContextSettings};
 use verdigris::window_style::{Resizable, Titled, Closable, Miniaturizable};
 
 fn main() {
     gl::load_with(|cstr| verdigris::gl::get_proc_address(cstr));
-    let mode = VideoMode { width: 400, height: 400 };
-    let mut window = Window::new(mode,
-                                 &[Titled, Closable, Resizable, Miniaturizable],
-                                 "Hey a new NSWindow !",
-                                 ContextSettings::new());
+
+    let mut window = WindowBuilder::new()
+        .video_mode(VideoMode { width: 800, height: 600 })
+        .style(&[Titled, Closable, Resizable, Miniaturizable])
+        .title("Hey a new NSWindow !")
+        .settings(ContextSettings::new())
+        .create();
+
     window.show();
     while !window.should_close() {
         window.poll_event();

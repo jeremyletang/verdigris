@@ -66,11 +66,25 @@ impl WindowBuilder {
     }
 
     pub fn create(self) -> Window {
-        let style = self.style.as_ref().clone();
-        let title = self.title.as_ref().clone();
-        Window::new(self.video_mode.unwrap(),
-                    style.unwrap().as_slice(),
-                    title.unwrap().as_slice(),
-                    self.settings.unwrap())
+        let style = match self.style {
+            Some(ref s) => s.clone(),
+            None => vec![]
+        };
+        let title = match self.title {
+            Some(ref t) => t.clone(),
+            None => "".to_string()
+        };
+        let video_mode = match self.video_mode {
+            Some(v) => v,
+            None => VideoMode::new()
+        };
+        let settings = match self.settings {
+            Some(s) => s.clone(),
+            None => ContextSettings::new()
+        };
+        Window::new(video_mode,
+                    style.as_slice(),
+                    title.as_slice(),
+                    settings)
     }
 }

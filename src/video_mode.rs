@@ -28,3 +28,12 @@ pub struct VideoMode {
     pub width: i32,
     pub height: i32
 }
+
+impl VideoMode {
+    pub fn new() -> VideoMode {
+        VideoMode {
+            width: 800i32,
+            height: 600i32
+        }
+    }
+}

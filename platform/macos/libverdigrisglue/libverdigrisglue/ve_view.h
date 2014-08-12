@@ -18,12 +18,5 @@
 - (BOOL) acceptsFirstResponder;
 - (BOOL)canBecomeKeyView;
 - (BOOL)isOpaque;
-//- (void)setOpenGLContext:(NSOpenGLContext*)context;
-//- (NSOpenGLContext*)openGLContext;
-//- (void)clearGLContext;
-//- (void)prepareOpenGL;
-//- (void)update;
-//- (void)setPixelFormat:(NSOpenGLPixelFormat*)pixelFormat;
-//- (NSOpenGLPixelFormat*)pixelFormat;
 
 @end

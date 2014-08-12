@@ -10,19 +10,8 @@
 
 static NSOpenGLContext*
 createGLContext(uint32_t pixelAttrs[]) {
-//    NSOpenGLPixelFormatAttribute pixelAttrs[] = {
-//        NSOpenGLPFADoubleBuffer,
-//        NSOpenGLPFAOpenGLProfile, NSOpenGLProfileVersion3_2Core,
-//        NSOpenGLPFAColorSize, 24,
-//        NSOpenGLPFAAlphaSize, 8,
-//        NSOpenGLPFADepthSize, 24,
-//        NSOpenGLPFAStencilSize, 8,
-//        NSOpenGLPFASampleBuffers, 0,
-//        0,
-//    };
-    
     NSOpenGLPixelFormat* pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:pixelAttrs];
-    
+
     NSOpenGLContext* glContext = [[NSOpenGLContext alloc]
                                   initWithFormat:pixelFormat
                                   shareContext:NULL];
@@ -59,7 +48,6 @@ createGLContext(uint32_t pixelAttrs[]) {
         // Create the view.
         self->glContext = createGLContext(context);
         self->glView = [[VEView alloc] initWithFrame:[[self->window contentView] frame]];
-//        [self->glView makeContextCurrent];
         
         if (self->glView == nil) {
             NSLog(@"Could not create an instance of NSOpenGLView ");
