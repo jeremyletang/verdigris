@@ -117,7 +117,7 @@ mod glue {
     use super::{NSSize, NSPoint, BOOL, id};
     use libc::{c_int, c_char, c_uint, c_void};
 
-    #[link(name = "verdigrisglue")]
+    #[link(name = "verdigrisglue", kind="static")]
     extern {
         // window handler
         pub fn ve_windowhandler_new(size: NSSize, style: c_int, context: *const u32) -> id;

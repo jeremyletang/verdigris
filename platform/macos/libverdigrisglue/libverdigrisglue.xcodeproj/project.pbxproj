@@ -16,7 +16,7 @@
 		3F76BFE31976B75D008481A2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F76BFE21976B75D008481A2 /* Cocoa.framework */; };
 		3F76BFF41976B75D008481A2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F76BFF31976B75D008481A2 /* XCTest.framework */; };
 		3F76BFF51976B75D008481A2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F76BFE21976B75D008481A2 /* Cocoa.framework */; };
-		3F76BFF81976B75D008481A2 /* libverdigrisglue.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F76BFDF1976B75D008481A2 /* libverdigrisglue.dylib */; };
+		3F76BFF81976B75D008481A2 /* libverdigrisglue.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F76BFDF1976B75D008481A2 /* libverdigrisglue.a */; };
 		3F76BFFE1976B75D008481A2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F76BFFC1976B75D008481A2 /* InfoPlist.strings */; };
 		3F76C0001976B75D008481A2 /* libverdigrisglueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F76BFFF1976B75D008481A2 /* libverdigrisglueTests.m */; };
 		3F76C00B1976B77C008481A2 /* ve_window.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F76C0091976B77C008481A2 /* ve_window.h */; };
@@ -44,7 +44,7 @@
 		3F69B497198018E1000E15B2 /* ve_mouse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ve_mouse.m; sourceTree = "<group>"; };
 		3F731918199A0B2600CEB922 /* ve_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ve_view.h; sourceTree = "<group>"; };
 		3F731919199A0B2600CEB922 /* ve_view.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ve_view.m; sourceTree = "<group>"; };
-		3F76BFDF1976B75D008481A2 /* libverdigrisglue.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libverdigrisglue.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F76BFDF1976B75D008481A2 /* libverdigrisglue.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libverdigrisglue.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F76BFE21976B75D008481A2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3F76BFE51976B75D008481A2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3F76BFE61976B75D008481A2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -77,7 +77,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F76BFF51976B75D008481A2 /* Cocoa.framework in Frameworks */,
-				3F76BFF81976B75D008481A2 /* libverdigrisglue.dylib in Frameworks */,
+				3F76BFF81976B75D008481A2 /* libverdigrisglue.a in Frameworks */,
 				3F76BFF41976B75D008481A2 /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,7 +98,7 @@
 		3F76BFE01976B75D008481A2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3F76BFDF1976B75D008481A2 /* libverdigrisglue.dylib */,
+				3F76BFDF1976B75D008481A2 /* libverdigrisglue.a */,
 				3F76BFF21976B75D008481A2 /* libverdigrisglueTests.xctest */,
 			);
 			name = Products;
@@ -203,7 +203,7 @@
 			);
 			name = libverdigrisglue;
 			productName = libverdigrisglue;
-			productReference = 3F76BFDF1976B75D008481A2 /* libverdigrisglue.dylib */;
+			productReference = 3F76BFDF1976B75D008481A2 /* libverdigrisglue.a */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		3F76BFF11976B75D008481A2 /* libverdigrisglueTests */ = {
@@ -343,6 +343,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -376,6 +377,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
 			};
@@ -386,8 +388,10 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_EXTENSION = a;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "libverdigrisglue/libverdigrisglue-Prefix.pch";
+				MACH_O_TYPE = staticlib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -397,8 +401,10 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_EXTENSION = a;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "libverdigrisglue/libverdigrisglue-Prefix.pch";
+				MACH_O_TYPE = staticlib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

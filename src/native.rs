@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use cursor::Cursor;
+use inputs::Cursor;
 use video_mode::VideoMode;
 use window_style::WindowStyle;
 use context_settings::ContextSettings;

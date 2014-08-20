@@ -22,33 +22,26 @@
 
 //! Window, keyboard and mouse related events handling
 
-use keyboard::Key;
+use inputs::Key;
+use inputs::MouseButton;
 
 #[deriving(Clone, PartialEq, PartialOrd, Show)]
 pub enum Event {
     Close,
-    Move {
-        pub x: i32,
-        pub y: i32
-    },
-    Resize {
-        pub x: i32,
-        pub y: i32
-    },
+    WindowMove(i32, i32), // new pos x, y
+    WindowResize(i32, i32), // width / height
     KeyUp(Key),
     KeyDown(Key),
-    MouseMoved {
-        pub x: i32,
-        pub y: i32
-    },
-    LeftMouseDown,
-    LeftMouseUp,
-    RightMouseDown,
-    RightMouseUp,
-    ScrollWheelUp(f32),
-    ScrollWheelDown(f32),
+    MouseMoved(i32, i32), // new pos x, y
+    MouseButtonUp(MouseButton),
+    MouseButtonDown(MouseButton),
+    ScrollWheel(f32),
     MouseEntered,
-    MouseExited
+    MouseExited,
+    Iconify,
+    Restore,
+    FocusGained,
+    FocusLost
 }
 
 #[doc(hidden)]
@@ -69,6 +62,10 @@ pub mod raw {
     pub static SCROLL_WHEEL_DOWN: ::libc::c_uint = 11;
     pub static MOUSE_ENTERED: ::libc::c_uint = 12;
     pub static MOUSE_EXITED: ::libc::c_uint = 13;
+    pub static ICONIFY: ::libc::c_uint = 14;
+    pub static RESTORE: ::libc::c_uint = 15;
+    pub static FOCUS_GAINED: ::libc::c_uint = 16;
+    pub static FOCUS_LOSED: ::libc::c_uint = 17;
 
     #[repr(C)]
     pub struct move_t {

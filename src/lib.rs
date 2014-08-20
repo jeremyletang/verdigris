@@ -56,7 +56,5 @@ mod window_builder;
 pub mod context_settings;
 pub mod window_style;
 pub mod event;
-pub mod keyboard;
-pub mod cursor;
-pub mod mouse;
+pub mod inputs;
 pub mod gl;

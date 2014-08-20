@@ -20,7 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use keyboard::{mod, Key};
+use inputs as keyboard;
+use inputs::Key;
 
 pub fn from_keycode(code: u32) -> Key {
     match code {

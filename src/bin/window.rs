@@ -16,6 +16,7 @@ fn main() {
         .expect("Cannot create window !");
 
     window.show();
+
     while !window.should_close() {
         window.poll_event();
 

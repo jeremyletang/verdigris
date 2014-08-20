@@ -23,25 +23,7 @@
 //! Cursor handling
 
 use imp;
-
-#[repr(u32)]
-#[deriving(Clone, PartialEq, PartialOrd, Show)]
-pub enum Cursor {
-    Arrow = 0u32,
-    IBeam,
-    CrossHair,
-    ClosedHand,
-    OpenHand,
-    PointingHand,
-    ResizeLeft,
-    ResizeRight,
-    ResizeLeftRight,
-    ResizeUp,
-    ResizeDown,
-    ResizeUpDown,
-    DisappearingItem,
-    IBeamVertical
-}
+use input::Cursor;
 
 pub fn get_default() -> Cursor {
     imp::cursor::get_default()

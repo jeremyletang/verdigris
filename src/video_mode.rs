@@ -32,8 +32,8 @@ pub struct VideoMode {
 impl VideoMode {
     pub fn new() -> VideoMode {
         VideoMode {
-            width: 800i32,
-            height: 600i32
+            width: 640i32,
+            height: 480i32
         }
     }
 }

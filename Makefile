@@ -20,14 +20,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-build-osx-glue:
-	cd platform/macos/libverdigrisglue && xcodebuild
-	rm -rf /usr/local/lib/libverdigrisglue.dylib
-	cp platform/macos/libverdigrisglue/build/Release/libverdigrisglue.dylib /usr/local/lib
+OK_COLOR    = \x1b[32;01m
+NO_COLOR    = \x1b[0m
+ECHO 		= echo -e
 
-doc:
-	rustdoc -o doc src/lib.rs -L target/deps
+build-osx-glue:
+	@$(ECHO) "$(OK_COLOR) Building libverdigrisglue.a $(NO_COLOR)"
+	cd platform/macos/libverdigrisglue && xcodebuild
+	@$(ECHO) "$(OK_COLOR) Moving libverdigrisglue.a into $(OUT_DIR) $(NO_COLOR)"
+	cp platform/macos/libverdigrisglue/build/Release/libverdigrisglue.a $(OUT_DIR)
 
 clean:
+	cd platform/macos/libverdigrisglue && xcodebuild clean
 	rm -rf doc
 	rm -rf target

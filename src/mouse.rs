@@ -26,13 +26,6 @@ use imp;
 use native::Wrapper;
 use window::Window;
 
-#[deriving(Clone, Show, PartialEq, PartialOrd)]
-pub enum MouseButton {
-    Left,
-    Right,
-    Other
-}
-
 pub fn location(window: &Window) -> (i32, i32) {
     imp::mouse::location(window.unwrap())
 }

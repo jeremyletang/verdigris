@@ -21,7 +21,7 @@
 // SOFTWARE.
 
 use imp::ffi;
-use cursor::{Cursor, Arrow};
+use inputs::{Cursor, Arrow};
 
 pub fn show() {
     ffi::ve_cursor_show()
